@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's Next with SUNY Google Cloud AI Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+<style>
+:root {
+  --gc-blue: #4285F4;
+  --gc-red: #EA4335;
+  --gc-yellow: #FBBC04;
+  --gc-green: #34A853;
+  --gc-dark-blue: #185ABC;
+  --gc-purple: #8E24AA;
+  --gc-coral: #EE4D5D;
+  --gc-teal: #00897B;
+  --gc-lavender: #AC87EB;
+  --gc-sky: #078EFB;
+  --gc-text: #202124;
+  --gc-secondary: #5F6368;
+  --gc-border: #BDC1C6;
+  --gc-surface: #F8F9FA;
+  --gc-bg: #FFFFFF;
+  --radius: 12px;
+  --gc-blue-light: #D2E3FC;
+  --gc-blue-200: #8AB4F8;
+  --gc-blue-600: #1967D2;
+  --gc-blue-800: #174EA6;
+  --gc-gray-200: #E8EAED;
+  --gc-gray-300: #D9D9D9;
+  --font: 'Google Sans', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font);
+  color: var(--gc-text);
+  background: #000;
+  overflow: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+body.cursor-visible { cursor: default; }
+
+h1 { font-size: 2.8rem; font-weight: 700; color: var(--gc-text); letter-spacing: -0.02em; line-height: 1.2; }
+h2 { font-size: 1.875rem; font-weight: 700; color: var(--gc-text); letter-spacing: -0.02em; }
+h3 { font-size: 1.25rem; font-weight: 700; color: var(--gc-text); }
+strong { color: var(--gc-blue); font-weight: 700; }
+.subtext { color: var(--gc-secondary); font-size: 1.1rem; font-weight: 400; }
+.caption { color: var(--gc-secondary); font-size: 0.75rem; font-weight: 400; }
+.stat-number { font-size: 3.75rem; font-weight: 700; color: var(--gc-text); line-height: 1; }
+.stat-number.xl { font-size: 6rem; }
+.stat-label { font-size: 1.125rem; font-weight: 700; color: var(--gc-text); }
+.stat-desc { font-size: 1.125rem; font-weight: 400; color: var(--gc-secondary); }
+
+.slide {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 80px;
+  text-align: left;
+  background: var(--gc-bg);
+}
+.slide.active { display: flex; }
+.slide.title-slide { align-items: flex-start; }
+.slide.centered { align-items: center; text-align: center; }
+.slide.dark-bg { background: var(--gc-text); color: #fff; }
+.slide.dark-bg h1, .slide.dark-bg h2, .slide.dark-bg h3 { color: #fff; }
+.slide.dark-bg strong { color: var(--gc-blue-200); }
+.slide.dark-bg .subtext { color: rgba(255,255,255,0.6); }
+.slide.colored-bg { color: #fff; }
+.slide.colored-bg.gc-green-bg { background: var(--gc-green); }
+.slide.colored-bg.gc-blue-bg { background: var(--gc-blue); }
+.slide.colored-bg .section-number, .slide.colored-bg .section-title { color: inherit; }
+
+.main-statement {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 65%;
+}
+.main-statement strong { font-weight: 700; }
+
+.section-number { font-size: 4rem; font-weight: 700; color: var(--gc-text); line-height: 1; margin-bottom: 8px; }
+.section-title { font-size: 2rem; font-weight: 700; color: var(--gc-text); }
+.section-subtitle { font-size: 1.25rem; color: var(--gc-secondary); margin-top: 16px; max-width: 60%; }
+
+/* Google Cloud Logo */
+.gc-logo {
+  position: absolute;
+  bottom: 24px;
+  left: 40px;
+  z-index: 101;
+  opacity: 0.7;
+  font-size: 14px;
+  font-weight: 500;
+}
+.slide.title-slide .gc-logo { font-size: 16px; }
+
+/* Bottom banner */
+.gc-banner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  display: flex;
+  z-index: 100;
+}
+.gc-banner .gc-band { flex: 1; height: 100%; }
+.gc-banner .gc-band:nth-child(1) { background: var(--gc-blue); }
+.gc-banner .gc-band:nth-child(2) { background: var(--gc-red); }
+.gc-banner .gc-band:nth-child(3) { background: var(--gc-yellow); }
+.gc-banner .gc-band:nth-child(4) { background: var(--gc-green); }
+
+/* Reveals */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.reveal.shown { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.reveal.shown-fast { opacity: 1; transform: translateY(0); pointer-events: auto; transition-duration: 0s; }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.shown, .reveal-scale.shown-fast { opacity: 1; transform: scale(1); }
+.reveal-scale.shown-fast { transition-duration: 0s; }
+
+.reveal-blur {
+  opacity: 0;
+  filter: blur(20px);
+  transform: scale(1.05);
+  transition: opacity 0.7s ease, filter 0.7s ease, transform 0.7s ease;
+}
+.reveal-blur.shown, .reveal-blur.shown-fast { opacity: 1; filter: blur(0); transform: scale(1); }
+.reveal-blur.shown-fast { transition-duration: 0s; }
+
+/* Cards */
+.card {
+  background: var(--gc-surface);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: left;
+}
+.card:hover { border-color: var(--gc-blue); box-shadow: 0 4px 16px rgba(66,133,244,0.12); }
+.card.blue-top { border-top: 3px solid var(--gc-blue); }
+.card.red-top { border-top: 3px solid var(--gc-red); }
+.card.yellow-top { border-top: 3px solid var(--gc-yellow); }
+.card.green-top { border-top: 3px solid var(--gc-green); }
+.card.purple-top { border-top: 3px solid var(--gc-purple); }
+.card.teal-top { border-top: 3px solid var(--gc-teal); }
+
+.card-grid {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  margin-top: 24px;
+}
+.card-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.card-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.card-grid.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+/* Badges */
+.gc-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+.gc-badge.lg { width: 64px; height: 64px; font-size: 1.8rem; }
+.gc-badge.blue { background: var(--gc-blue); }
+.gc-badge.red { background: var(--gc-red); }
+.gc-badge.yellow { background: var(--gc-yellow); color: var(--gc-text); }
+.gc-badge.green { background: var(--gc-green); }
+.gc-badge.purple { background: var(--gc-purple); }
+.gc-badge.teal { background: var(--gc-teal); }
+.gc-badge.dark-blue { background: var(--gc-dark-blue); }
+.gc-badge .material-symbols-outlined { font-size: 24px; color: #fff; }
+.gc-badge.lg .material-symbols-outlined { font-size: 32px; }
+.gc-badge.yellow .material-symbols-outlined { color: var(--gc-text); }
+
+/* Flow diagram */
+.gc-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 24px;
+}
+.gc-flow-box {
+  padding: 20px 32px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  min-width: 140px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.gc-flow-box.blue { background: var(--gc-blue); }
+.gc-flow-box.red { background: var(--gc-red); }
+.gc-flow-box.yellow { background: var(--gc-yellow); color: var(--gc-text); }
+.gc-flow-box.green { background: var(--gc-green); }
+.gc-flow-box.dark-blue { background: var(--gc-dark-blue); }
+.gc-flow-box.purple { background: var(--gc-purple); }
+.gc-flow-box.teal { background: var(--gc-teal); }
+.gc-flow-box .material-symbols-outlined { font-size: 28px; color: #fff; }
+.gc-flow-box.yellow .material-symbols-outlined { color: var(--gc-text); }
+.gc-flow-box.large { padding: 28px 40px; font-size: 1.1rem; min-width: 180px; }
+
+.gc-flow-arrow {
+  width: 40px;
+  height: 2px;
+  background: var(--gc-border);
+  position: relative;
+  flex-shrink: 0;
+}
+.gc-flow-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -5px;
+  border: 6px solid transparent;
+  border-left: 8px solid var(--gc-border);
+}
+
+/* Section boxes */
+.gc-section-box {
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  color: #fff;
+  width: 100%;
+  text-align: left;
+}
+.gc-section-box.blue { background: var(--gc-blue); }
+.gc-section-box.green { background: var(--gc-green); }
+.gc-section-box.outline { background: transparent; border: 2px solid var(--gc-border); color: var(--gc-text); }
+.gc-section-box h3 { color: inherit; margin: 0 0 8px 0; }
+.gc-section-box p { color: inherit; opacity: 0.9; margin: 0; }
+
+/* Icon rows */
+.gc-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+}
+.gc-icon-row .gc-label { font-size: 1.1rem; color: var(--gc-text); font-weight: 500; }
+.gc-icon-row .gc-sublabel { font-size: 0.9rem; color: var(--gc-secondary); margin-top: 2px; }
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 24px;
+  vertical-align: -0.125em;
+  display: inline-block;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.material-symbols-outlined.md-36 { font-size: 36px; }
+.material-symbols-outlined.md-48 { font-size: 48px; }
+.material-symbols-outlined.filled { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+/* Progress & nav */
+.progress {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 200;
+  align-items: center;
+}
+.progress .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.12);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.progress .dot.active {
+  background: var(--gc-blue);
+  width: 24px;
+  border-radius: 4px;
+}
+.slide-number {
+  position: fixed;
+  top: 30px;
+  right: 40px;
+  font-size: 14px;
+  color: rgba(0,0,0,0.2);
+  font-variant-numeric: tabular-nums;
+  z-index: 200;
+}
+
+/* Quiz styles */
+.quiz-question {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gc-text);
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+.quiz-answer {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gc-blue);
+  padding: 20px 32px;
+  background: var(--gc-blue-light);
+  border-radius: var(--radius);
+  display: inline-block;
+}
+.strikethrough {
+  text-decoration: line-through;
+  color: var(--gc-secondary);
+  opacity: 0.5;
+}
+
+/* V1 platform diagram */
+.platform-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 32px;
+}
+.platform-hub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.hub-center {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gc-blue), var(--gc-dark-blue));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(66,133,244,0.3);
+}
+.hub-center .material-symbols-outlined { font-size: 40px; color: #fff; margin-bottom: 8px; }
+
+.spoke-container {
+  display: flex;
+  gap: 20px;
+}
+.spoke-card {
+  background: var(--gc-surface);
+  border: 2px solid var(--gc-gray-200);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  text-align: center;
+  min-width: 160px;
+  transition: all 0.3s;
+}
+.spoke-card .material-symbols-outlined { font-size: 32px; margin-bottom: 8px; }
+.spoke-card.blue-accent { border-color: var(--gc-blue); }
+.spoke-card.blue-accent .material-symbols-outlined { color: var(--gc-blue); }
+.spoke-card.green-accent { border-color: var(--gc-green); }
+.spoke-card.green-accent .material-symbols-outlined { color: var(--gc-green); }
+.spoke-card.yellow-accent { border-color: var(--gc-yellow); }
+.spoke-card.yellow-accent .material-symbols-outlined { color: var(--gc-yellow); }
+.spoke-card.red-accent { border-color: var(--gc-red); }
+.spoke-card.red-accent .material-symbols-outlined { color: var(--gc-red); }
+
+/* Skills grid */
+.skills-orbit {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+.skills-center {
+  padding: 20px 40px;
+  background: linear-gradient(135deg, var(--gc-blue), var(--gc-dark-blue));
+  border-radius: var(--radius);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(66,133,244,0.3);
+}
+.skills-ring {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 900px;
+}
+.skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--gc-surface);
+  border: 1px solid var(--gc-gray-200);
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gc-text);
+  transition: all 0.3s;
+}
+.skill-chip .material-symbols-outlined { font-size: 18px; }
+.skill-chip.blue { border-color: var(--gc-blue); background: rgba(66,133,244,0.08); }
+.skill-chip.blue .material-symbols-outlined { color: var(--gc-blue); }
+.skill-chip.green { border-color: var(--gc-green); background: rgba(52,168,83,0.08); }
+.skill-chip.green .material-symbols-outlined { color: var(--gc-green); }
+.skill-chip.red { border-color: var(--gc-red); background: rgba(234,67,53,0.08); }
+.skill-chip.red .material-symbols-outlined { color: var(--gc-red); }
+.skill-chip.yellow { border-color: var(--gc-yellow); background: rgba(251,188,4,0.08); }
+.skill-chip.yellow .material-symbols-outlined { color: var(--gc-yellow); }
+.skill-chip.purple { border-color: var(--gc-purple); background: rgba(142,36,170,0.08); }
+.skill-chip.purple .material-symbols-outlined { color: var(--gc-purple); }
+.skill-chip.teal { border-color: var(--gc-teal); background: rgba(0,137,123,0.08); }
+.skill-chip.teal .material-symbols-outlined { color: var(--gc-teal); }
+
+/* STRIVE domain cards */
+.strive-card {
+  background: var(--gc-surface);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  text-align: center;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.strive-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.strive-card .strive-icon { font-size: 28px; }
+.strive-card h3 { font-size: 0.85rem; font-weight: 700; line-height: 1.3; color: var(--gc-text); }
+.strive-card p { font-size: 0.72rem; color: var(--gc-secondary); line-height: 1.4; }
+
+/* Connector line from center to ring */
+.connector-line {
+  width: 2px;
+  height: 24px;
+  background: var(--gc-border);
+  position: relative;
+}
+.connector-line::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -5px;
+  border: 6px solid transparent;
+  border-top: 8px solid var(--gc-border);
+}
+
+/* Dynamic skills visual */
+.dynamic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  margin-top: 24px;
+}
+.dynamic-card {
+  background: var(--gc-surface);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: left;
+  border: 1px solid var(--gc-gray-200);
+  position: relative;
+  overflow: hidden;
+}
+.dynamic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+.dynamic-card.card-blue::before { background: var(--gc-blue); }
+.dynamic-card.card-green::before { background: var(--gc-green); }
+.dynamic-card.card-purple::before { background: var(--gc-purple); }
+.dynamic-card .card-icon { margin-bottom: 16px; }
+.dynamic-card .card-icon .material-symbols-outlined { font-size: 32px; }
+.dynamic-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.dynamic-card p { font-size: 0.85rem; color: var(--gc-secondary); line-height: 1.5; }
+
+/* Privacy features */
+.privacy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  margin-top: 24px;
+}
+.privacy-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--gc-surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--gc-gray-200);
+}
+.privacy-item .material-symbols-outlined { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+.privacy-item h3 { font-size: 1rem; margin-bottom: 4px; }
+.privacy-item p { font-size: 0.85rem; color: var(--gc-secondary); }
+
+/* Demo terminal */
+.terminal-window {
+  background: #1e1e1e;
+  border-radius: var(--radius);
+  padding: 0;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.terminal-header {
+  background: #2d2d2d;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+.terminal-dot.red { background: #ff5f57; }
+.terminal-dot.yellow { background: #febc2e; }
+.terminal-dot.green { background: #28c840; }
+.terminal-body {
+  padding: 20px 24px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.9rem;
+  color: #d4d4d4;
+  line-height: 1.8;
+}
+.terminal-body .prompt { color: var(--gc-green); }
+.terminal-body .command { color: #fff; }
+.terminal-body .output { color: var(--gc-blue-200); }
+.terminal-body .comment { color: #6a9955; }
+
+/* Animated pulse for skills */
+@keyframes softPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(66,133,244,0); }
+  50% { box-shadow: 0 0 30px 0 rgba(66,133,244,0.15); }
+}
+@keyframes skillFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.skill-chip.animated {
+  animation: skillFloat 3s ease-in-out infinite;
+}
+.skill-chip.animated:nth-child(2) { animation-delay: 0.3s; }
+.skill-chip.animated:nth-child(3) { animation-delay: 0.6s; }
+.skill-chip.animated:nth-child(4) { animation-delay: 0.9s; }
+.skill-chip.animated:nth-child(5) { animation-delay: 1.2s; }
+.skill-chip.animated:nth-child(6) { animation-delay: 1.5s; }
+
+/* Edge dots for colored sections */
+.edge-dots {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.edge-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+}
+
+/* V2 architecture */
+.v2-arch {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  margin-top: 32px;
+  justify-content: center;
+}
+.v2-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.v2-user .material-symbols-outlined { font-size: 48px; color: var(--gc-blue); }
+.v2-platform {
+  background: linear-gradient(135deg, var(--gc-blue), var(--gc-dark-blue));
+  border-radius: 16px;
+  padding: 28px 36px;
+  color: #fff;
+  text-align: center;
+  min-width: 220px;
+  box-shadow: 0 8px 32px rgba(66,133,244,0.3);
+}
+.v2-platform h3 { color: #fff; font-size: 1.2rem; margin-bottom: 8px; }
+.v2-platform .material-symbols-outlined { font-size: 36px; color: #fff; }
+.v2-skills-out {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.v2-skill-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--gc-surface);
+  border-radius: 8px;
+  border: 1px solid var(--gc-gray-200);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.v2-skill-item .material-symbols-outlined { font-size: 18px; }
+
+/* Animated data flow for V2 architecture */
+.v2-arch-animated {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  margin-top: 32px;
+  justify-content: center;
+  position: relative;
+}
+.v2-platform-hub {
+  background: linear-gradient(135deg, var(--gc-blue), var(--gc-dark-blue));
+  border-radius: 16px;
+  padding: 24px 32px;
+  color: #fff;
+  text-align: center;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+.v2-platform-hub h3 { color: #fff; font-size: 1.1rem; margin: 0; }
+.v2-platform-hub .material-symbols-outlined { font-size: 36px; color: #fff; }
+.v2-platform-hub .hub-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 20px;
+  border: 2px solid rgba(66,133,244,0.4);
+  animation: hubPulseRing 2.5s ease-out infinite;
+}
+@keyframes hubPulseRing {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+/* Flow connector with animated particles */
+.v2-flow-connector {
+  width: 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.v2-flow-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gc-blue), var(--gc-border));
+}
+.v2-flow-connector .data-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gc-blue);
+  box-shadow: 0 0 8px rgba(66,133,244,0.6);
+  animation: flowParticle 2s ease-in-out infinite;
+}
+.v2-flow-connector .data-particle:nth-child(2) { animation-delay: 0.7s; width: 4px; height: 4px; background: var(--gc-green); box-shadow: 0 0 8px rgba(52,168,83,0.6); }
+.v2-flow-connector .data-particle:nth-child(3) { animation-delay: 1.4s; width: 5px; height: 5px; background: var(--gc-red); box-shadow: 0 0 8px rgba(234,67,53,0.6); }
+@keyframes flowParticle {
+  0% { left: 0; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: calc(100% - 6px); opacity: 0; }
+}
+
+/* Animated skill items with sync status */
+.v2-skills-live {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.v2-skill-live {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--gc-surface);
+  border-radius: 10px;
+  border: 1px solid var(--gc-gray-200);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.v2-skill-live .material-symbols-outlined { font-size: 18px; }
+.v2-skill-live .sync-badge {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--gc-green);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.v2-skill-live .sync-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gc-green);
+  animation: syncPulse 2s ease-in-out infinite;
+}
+.v2-skill-live:nth-child(2) .sync-dot { animation-delay: 0.4s; }
+.v2-skill-live:nth-child(3) .sync-dot { animation-delay: 0.8s; }
+.v2-skill-live:nth-child(4) .sync-dot { animation-delay: 1.2s; }
+.v2-skill-live:nth-child(5) .sync-dot { animation-delay: 1.6s; }
+@keyframes syncPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Data sweep animation across skill item */
+.v2-skill-live::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(66,133,244,0.06), transparent);
+  animation: dataSweep 3s ease-in-out infinite;
+}
+.v2-skill-live:nth-child(1)::after { animation-delay: 0s; }
+.v2-skill-live:nth-child(2)::after { animation-delay: 0.6s; }
+.v2-skill-live:nth-child(3)::after { animation-delay: 1.2s; }
+.v2-skill-live:nth-child(4)::after { animation-delay: 1.8s; }
+.v2-skill-live:nth-child(5)::after { animation-delay: 2.4s; }
+@keyframes dataSweep {
+  0% { left: -100%; }
+  40% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* Glow border on hover */
+.v2-skill-live:hover {
+  border-color: var(--gc-blue);
+  box-shadow: 0 2px 12px rgba(66,133,244,0.15);
+}
+
+/* Matrix / Kung Fu slide */
+.matrix-bg {
+  background: #0a0a0a;
+}
+.matrix-quote {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #00ff41;
+  font-family: 'Google Sans', monospace;
+  text-shadow: 0 0 20px rgba(0,255,65,0.4), 0 0 60px rgba(0,255,65,0.15);
+  letter-spacing: 0.02em;
+}
+.matrix-caption {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.35);
+  font-style: italic;
+  margin-top: 8px;
+}
+.matrix-reframe {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.4;
+}
+.matrix-skill-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 24px;
+}
+.matrix-pill {
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.matrix-pill.loaded {
+  background: rgba(0,255,65,0.08);
+  border: 1px solid rgba(0,255,65,0.3);
+  color: #00ff41;
+}
+.matrix-pill .material-symbols-outlined {
+  font-size: 18px;
+  color: inherit;
+}
+.matrix-pill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,255,65,0.1), transparent);
+  animation: matrixSweep 2.5s ease-in-out infinite;
+}
+.matrix-pill:nth-child(1)::after { animation-delay: 0s; }
+.matrix-pill:nth-child(2)::after { animation-delay: 0.3s; }
+.matrix-pill:nth-child(3)::after { animation-delay: 0.6s; }
+.matrix-pill:nth-child(4)::after { animation-delay: 0.9s; }
+.matrix-pill:nth-child(5)::after { animation-delay: 1.2s; }
+@keyframes matrixSweep {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* Comparison layout */
+.comparison-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  width: 100%;
+  margin-top: 32px;
+}
+.comparison-col {
+  padding: 32px;
+  border-radius: var(--radius);
+}
+.comparison-col.before {
+  background: var(--gc-surface);
+  border: 2px solid var(--gc-gray-200);
+}
+.comparison-col.after {
+  background: rgba(66,133,244,0.05);
+  border: 2px solid var(--gc-blue);
+}
+.comparison-col h3 { margin-bottom: 20px; font-size: 1.2rem; }
+.comparison-col .material-symbols-outlined { font-size: 20px; vertical-align: -4px; margin-right: 8px; }
+.comparison-col ul { list-style: none; padding: 0; }
+.comparison-col ul li {
+  padding: 8px 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.comparison-col ul li:last-child { border-bottom: none; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .slide { padding: 40px 30px; }
+  .card-grid.cols-3 { grid-template-columns: 1fr; }
+  .card-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+  .gc-flow { flex-direction: column; }
+  .gc-flow-arrow { transform: rotate(90deg); }
+  .dynamic-grid { grid-template-columns: 1fr; }
+  .privacy-grid { grid-template-columns: 1fr; }
+  .comparison-cols { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide active title-slide" id="slide-1">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <h1 style="font-size:2.6rem;">What's <strong>Next</strong> with the<br>SUNY Google Cloud<br>AI Platform</h1>
+    <p class="subtext" style="margin-top:20px;">Building the future of research, one skill at a time</p>
+    <p class="caption" style="margin-top:12px;">May 2026</p>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 2: Section Break - Current State -->
+<div class="slide colored-bg gc-blue-bg" id="slide-2">
+  <div class="gc-logo"><span style="color:#fff">G</span><span style="color:rgba(255,255,255,0.8)">o</span><span style="color:rgba(255,255,255,0.8)">o</span><span style="color:#fff">g</span><span style="color:rgba(255,255,255,0.8)">l</span><span style="color:rgba(255,255,255,0.8)">e</span> <span style="color:rgba(255,255,255,0.7)">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <div class="section-number" style="color:#fff;">01</div>
+    <div class="section-title" style="color:#fff;">Where we are today</div>
+    <p class="section-subtitle" style="color:rgba(255,255,255,0.8);">The SUNY AI Platform V1</p>
+  </div>
+  <div class="edge-dots">
+    <div class="edge-dot"></div><div class="edge-dot"></div><div class="edge-dot"></div><div class="edge-dot"></div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 3: V1 Platform Diagram -->
+<div class="slide" id="slide-3">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <h2>Platform <strong>V1</strong> — Current State</h2>
+    <p class="subtext">Researchers can provision resources and access key AI services</p>
+  </div>
+  <div class="gc-flow" style="margin-top:40px;">
+    <div class="gc-flow-box blue large reveal-scale" data-step="1">
+      <span class="material-symbols-outlined">person</span>
+      <span>Researcher</span>
+    </div>
+    <div class="gc-flow-arrow reveal" data-step="2"></div>
+    <div class="gc-flow-box dark-blue large reveal-scale" data-step="2">
+      <span class="material-symbols-outlined">cloud</span>
+      <span>SUNY AI Platform</span>
+    </div>
+    <div class="gc-flow-arrow reveal" data-step="3"></div>
+    <div style="display:flex;flex-direction:column;gap:12px;" class="reveal-scale" data-step="3">
+      <div class="spoke-card blue-accent">
+        <span class="material-symbols-outlined" style="color:var(--gc-blue);">dns</span>
+        <h3 style="font-size:0.9rem;">Provision Resources</h3>
+      </div>
+      <div class="spoke-card green-accent">
+        <span class="material-symbols-outlined" style="color:var(--gc-green);">paid</span>
+        <h3 style="font-size:0.9rem;">Grants AI</h3>
+      </div>
+      <div class="spoke-card red-accent">
+        <span class="material-symbols-outlined" style="color:var(--gc-red);">auto_awesome</span>
+        <h3 style="font-size:0.9rem;">Gemini Enterprise</h3>
+      </div>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 4: V2 Goals -->
+<div class="slide" id="slide-4">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <h2>What we want in <strong>V2</strong></h2>
+    <p class="subtext">Two key areas of focus for the next phase</p>
+  </div>
+  <div class="comparison-cols">
+    <div class="comparison-col before reveal-scale" data-step="1">
+      <div class="gc-badge blue lg" style="margin-bottom:20px;">
+        <span class="material-symbols-outlined">speed</span>
+      </div>
+      <h3>Reduce <strong>Time to Science</strong></h3>
+      <ul>
+        <li><span class="material-symbols-outlined" style="color:var(--gc-blue);font-size:18px;">science</span> Less time configuring infrastructure</li>
+        <li><span class="material-symbols-outlined" style="color:var(--gc-blue);font-size:18px;">biotech</span> More time on actual research</li>
+        <li><span class="material-symbols-outlined" style="color:var(--gc-blue);font-size:18px;">rocket_launch</span> Faster path from idea to experiment</li>
+        <li><span class="material-symbols-outlined" style="color:var(--gc-blue);font-size:18px;">trending_up</span> Accelerate discovery and publication</li>
+      </ul>
+    </div>
+    <div class="comparison-col after reveal-scale" data-step="2">
+      <div class="gc-badge green lg" style="margin-bottom:20px;">
+        <span class="material-symbols-outlined">touch_app</span>
+      </div>
+      <h3>Ease & <strong>Simplicity</strong></h3>
+      <ul>
+        <li><span class="material-symbols-outlined" style="color:var(--gc-green);font-size:18px;">auto_awesome</span> Intuitive, no cloud expertise needed</li>
+        <li><span class="material-symbols-outlined" style="color:var(--gc-green);font-size:18px;">psychology</span> Platform that thinks for you</li>
+        <li><span class="material-symbols-outlined" style="color:var(--gc-green);font-size:18px;">visibility_off</span> Complexity hidden, not eliminated</li>
+        <li><span class="material-symbols-outlined" style="color:var(--gc-green);font-size:18px;">school</span> Works for students and faculty alike</li>
+      </ul>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 5: Quiz -->
+<div class="slide centered" id="slide-5">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div class="gc-badge yellow lg" style="margin-bottom:24px;">
+      <span class="material-symbols-outlined" style="color:var(--gc-text);">quiz</span>
+    </div>
+    <p class="caption" style="text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:16px;">Pop Quiz</p>
+    <div class="quiz-question">Is <span style="color:var(--gc-blue);">Vertex AI</span> still a thing?</div>
+    <p class="subtext">You attended Google Cloud Next 2026...</p>
+  </div>
+  <div class="reveal" data-step="1" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <p style="font-size:1.2rem;color:var(--gc-secondary);margin-bottom:12px;">What is it called now?</p>
+  </div>
+  <div class="reveal-scale" data-step="2" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div class="quiz-answer">
+      <span class="material-symbols-outlined" style="vertical-align:-4px;margin-right:8px;">auto_awesome</span>
+      Gemini Enterprise Agent Platform
+    </div>
+    <p class="caption" style="margin-top:12px;">Announced April 22, 2026 at Cloud Next '26</p>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 6: Key Insight - Dark bg -->
+<div class="slide dark-bg centered" id="slide-6">
+  <div class="gc-logo"><span style="color:rgba(255,255,255,0.7)">G</span><span style="color:rgba(255,255,255,0.5)">o</span><span style="color:rgba(255,255,255,0.5)">o</span><span style="color:rgba(255,255,255,0.7)">g</span><span style="color:rgba(255,255,255,0.5)">l</span><span style="color:rgba(255,255,255,0.5)">e</span> <span style="color:rgba(255,255,255,0.4)">Cloud</span></div>
+  <div class="reveal-blur" data-step="0" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <p class="main-statement" style="color:#fff;max-width:70%;text-align:center;">
+      But here's the thing &mdash;<br>
+      <strong style="color:var(--gc-blue-200);font-size:2.4rem;">it's irrelevant.</strong>
+    </p>
+  </div>
+  <div class="reveal" data-step="1" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;margin-top:32px;">
+    <p style="color:rgba(255,255,255,0.7);font-size:1.2rem;max-width:60%;text-align:center;">
+      As a researcher, you should <strong style="color:#fff;">never need</strong> to remember what Vertex AI is called. This should be <strong style="color:#fff;">abstracted away</strong> from researchers, faculty, and students.
+    </p>
+  </div>
+  <div class="reveal" data-step="2" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;margin-top:24px;">
+    <p style="color:var(--gc-blue-200);font-size:1.6rem;font-weight:700;">It should be intuitive. It should just work.</p>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 7: Section Break - V2 Solution -->
+<div class="slide colored-bg gc-green-bg" id="slide-7">
+  <div class="gc-logo"><span style="color:#fff">G</span><span style="color:rgba(255,255,255,0.8)">o</span><span style="color:rgba(255,255,255,0.8)">o</span><span style="color:#fff">g</span><span style="color:rgba(255,255,255,0.8)">l</span><span style="color:rgba(255,255,255,0.8)">e</span> <span style="color:rgba(255,255,255,0.7)">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <div class="section-number" style="color:#fff;">02</div>
+    <div class="section-title" style="color:#fff;">The V2 Solution</div>
+    <p class="section-subtitle" style="color:rgba(255,255,255,0.8);">Introducing a skills-based AI platform</p>
+  </div>
+  <div class="edge-dots">
+    <div class="edge-dot"></div><div class="edge-dot"></div><div class="edge-dot"></div><div class="edge-dot"></div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 8: Matrix "I Know Kung Fu" moment -->
+<div class="slide matrix-bg centered" id="slide-8">
+  <div class="gc-logo"><span style="color:rgba(255,255,255,0.4)">G</span><span style="color:rgba(255,255,255,0.3)">o</span><span style="color:rgba(255,255,255,0.3)">o</span><span style="color:rgba(255,255,255,0.4)">g</span><span style="color:rgba(255,255,255,0.3)">l</span><span style="color:rgba(255,255,255,0.3)">e</span> <span style="color:rgba(255,255,255,0.2)">Cloud</span></div>
+  <div class="reveal-blur" data-step="0" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <img src="https://media.giphy.com/media/3WvhJ783Le5ieNEZ8z/giphy.gif" alt="I know Kung Fu" style="width:320px;border-radius:12px;margin-bottom:20px;box-shadow:0 4px 24px rgba(0,255,65,0.2);">
+    <div class="matrix-quote">"I know Kung Fu."</div>
+    <p class="matrix-caption">— Neo, The Matrix (1999)</p>
+  </div>
+  <div class="reveal" data-step="1" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;margin-top:40px;">
+    <p class="matrix-reframe">Skills give you a <span style="color:#00ff41;">domain expert</span><br>at your fingertips</p>
+  </div>
+  <div class="reveal" data-step="2" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;margin-top:8px;">
+    <p style="color:rgba(255,255,255,0.5);font-size:1rem;max-width:55%;">You don't need years of experience with each service. Just load the skill — and you know it.</p>
+  </div>
+  <div class="reveal-scale" data-step="3" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div class="matrix-skill-pills">
+      <div class="matrix-pill loaded"><span class="material-symbols-outlined">database</span> "I know BigQuery"</div>
+      <div class="matrix-pill loaded"><span class="material-symbols-outlined">deployed_code</span> "I know Cloud Run"</div>
+      <div class="matrix-pill loaded"><span class="material-symbols-outlined">psychology</span> "I know Gemini"</div>
+      <div class="matrix-pill loaded"><span class="material-symbols-outlined">monitoring</span> "I know Monitoring"</div>
+      <div class="matrix-pill loaded"><span class="material-symbols-outlined">security</span> "I know IAM"</div>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 9: V2 Architecture (Animated) -->
+<div class="slide" id="slide-9">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <h2>Platform <strong>V2</strong> — Skills Architecture</h2>
+    <p class="subtext">Knowledge is transferred to skills, not the researcher</p>
+  </div>
+  <div class="v2-arch-animated">
+    <div class="v2-user reveal-scale" data-step="1" style="align-self:center;">
+      <span class="material-symbols-outlined" style="font-size:48px;color:var(--gc-blue);">school</span>
+      <strong style="font-size:0.9rem;">Researcher<br>or Student</strong>
+    </div>
+    <div class="gc-flow-arrow reveal" data-step="2" style="width:50px;align-self:center;"></div>
+    <div class="v2-platform-hub reveal-scale" data-step="2">
+      <div class="hub-pulse"></div>
+      <span class="material-symbols-outlined">hub</span>
+      <h3>Platform V2</h3>
+      <p style="font-size:0.75rem;opacity:0.8;margin:0;">Skills-powered</p>
+    </div>
+    <div class="v2-flow-connector reveal" data-step="3">
+      <div class="v2-flow-line"></div>
+      <div class="data-particle"></div>
+      <div class="data-particle"></div>
+      <div class="data-particle"></div>
+    </div>
+    <div class="v2-skills-live reveal-scale" data-step="3">
+      <div class="v2-skill-live">
+        <span class="material-symbols-outlined" style="color:var(--gc-blue);">cloud</span> SUNY AI Platform Guardrails and Policies
+        <span class="sync-badge"><span class="sync-dot"></span> synced</span>
+      </div>
+      <div class="v2-skill-live">
+        <span class="material-symbols-outlined" style="color:var(--gc-green);">database</span> BigQuery
+        <span class="sync-badge"><span class="sync-dot"></span> synced</span>
+      </div>
+      <div class="v2-skill-live">
+        <span class="material-symbols-outlined" style="color:var(--gc-red);">deployed_code</span> Cloud Run
+        <span class="sync-badge"><span class="sync-dot"></span> synced</span>
+      </div>
+      <div class="v2-skill-live">
+        <span class="material-symbols-outlined" style="color:var(--gc-purple);">psychology</span> Gemini Enterprise
+        <span class="sync-badge"><span class="sync-dot"></span> synced</span>
+      </div>
+      <div class="v2-skill-live">
+        <span class="material-symbols-outlined" style="color:var(--gc-teal);">apps</span> Every GCP Feature
+        <span class="sync-badge"><span class="sync-dot"></span> synced</span>
+      </div>
+    </div>
+  </div>
+  <div class="reveal" data-step="4" style="margin-top:20px;text-align:center;width:100%;display:flex;justify-content:center;">
+    <div class="gc-section-box outline" style="max-width:650px;text-align:center;padding:16px 24px;">
+      <p style="font-size:0.9rem;margin:0;"><span class="material-symbols-outlined" style="vertical-align:-4px;color:var(--gc-green);margin-right:8px;font-size:18px;">sync</span> Skills receive <strong>live updates</strong> from source — the researcher never falls behind</p>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 10: Good News - You don't have to create skills -->
+<div class="slide" id="slide-10">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <div class="gc-badge green lg" style="margin-bottom:16px;">
+      <span class="material-symbols-outlined">celebration</span>
+    </div>
+    <h2>Good news? You don't have to <strong>create</strong> them.</h2>
+    <p class="subtext">Skills are published and maintained for you</p>
+  </div>
+  <div class="card-grid cols-2" style="margin-top:28px;">
+    <div class="card blue-top reveal-scale" data-step="1" style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="gc-badge blue">
+          <span class="material-symbols-outlined">cloud</span>
+        </div>
+        <div>
+          <h3>Google <strong>Official Skills</strong></h3>
+          <p class="caption">Published & maintained by Google</p>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:var(--gc-secondary);line-height:1.6;">Google publishes official skills for BigQuery, Cloud Run, Gemini, Vertex AI, and every major GCP service. Always up to date, always accurate.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+        <span style="font-size:0.7rem;padding:4px 10px;background:var(--gc-blue-light);border-radius:12px;color:var(--gc-dark-blue);font-weight:600;">BigQuery</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:var(--gc-blue-light);border-radius:12px;color:var(--gc-dark-blue);font-weight:600;">Cloud Run</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:var(--gc-blue-light);border-radius:12px;color:var(--gc-dark-blue);font-weight:600;">Gemini</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:var(--gc-blue-light);border-radius:12px;color:var(--gc-dark-blue);font-weight:600;">GKE</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:var(--gc-blue-light);border-radius:12px;color:var(--gc-dark-blue);font-weight:600;">IAM</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:rgba(0,0,0,0.05);border-radius:12px;color:var(--gc-secondary);font-weight:600;">+ more</span>
+      </div>
+    </div>
+    <div class="card green-top reveal-scale" data-step="2" style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="gc-badge green">
+          <span class="material-symbols-outlined">public</span>
+        </div>
+        <div>
+          <h3><strong>skills.sh</strong></h3>
+          <p class="caption">The community skills repository</p>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:var(--gc-secondary);line-height:1.6;">Not just Google. <strong style="color:var(--gc-text);">skills.sh</strong> is a repository of every possible skill — frontend, backend, data science, DevOps, security, and more. Built by the community, for everyone.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+        <span style="font-size:0.7rem;padding:4px 10px;background:rgba(52,168,83,0.12);border-radius:12px;color:var(--gc-green);font-weight:600;">React</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:rgba(52,168,83,0.12);border-radius:12px;color:var(--gc-green);font-weight:600;">Python</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:rgba(52,168,83,0.12);border-radius:12px;color:var(--gc-green);font-weight:600;">Terraform</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:rgba(52,168,83,0.12);border-radius:12px;color:var(--gc-green);font-weight:600;">Docker</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:rgba(52,168,83,0.12);border-radius:12px;color:var(--gc-green);font-weight:600;">AWS</span>
+        <span style="font-size:0.7rem;padding:4px 10px;background:rgba(0,0,0,0.05);border-radius:12px;color:var(--gc-secondary);font-weight:600;">+ hundreds</span>
+      </div>
+    </div>
+  </div>
+  <div class="reveal" data-step="3" style="margin-top:20px;text-align:center;width:100%;display:flex;justify-content:center;">
+    <div class="gc-section-box outline" style="max-width:600px;text-align:center;padding:14px 24px;">
+      <p style="font-size:0.9rem;margin:0;"><span class="material-symbols-outlined" style="vertical-align:-4px;color:var(--gc-blue);margin-right:8px;font-size:18px;">download</span> Just install a skill and you're ready — no configuration, no learning curve</p>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 11: Dynamic & Personalized -->
+<div class="slide" id="slide-11">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <h2>But what's even <strong>better</strong>?</h2>
+    <p class="subtext">Skills are not static — they're dynamic, adoptable, and personal</p>
+  </div>
+  <div class="dynamic-grid">
+    <div class="dynamic-card card-blue reveal-scale" data-step="1">
+      <div class="card-icon"><span class="material-symbols-outlined" style="color:var(--gc-blue);">sync</span></div>
+      <h3>Dynamic</h3>
+      <p>Skills evolve with platform changes. When APIs update or services rebrand, your skills update automatically.</p>
+    </div>
+    <div class="dynamic-card card-green reveal-scale" data-step="2">
+      <div class="card-icon"><span class="material-symbols-outlined" style="color:var(--gc-green);">tune</span></div>
+      <h3>Personalized</h3>
+      <p>Skills learn your conventions — naming patterns, preferred regions, resource templates. They adapt to how <em>you</em> work.</p>
+    </div>
+    <div class="dynamic-card card-purple reveal-scale" data-step="3">
+      <div class="card-icon"><span class="material-symbols-outlined" style="color:var(--gc-purple);">extension</span></div>
+      <h3>Extensible</h3>
+      <p>Not limited to Google Cloud. Add skills for frontend development, data science tools, or any platform you use.</p>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 12: Privacy & Storage -->
+<div class="slide" id="slide-12">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <h2>Sounds complicated. <strong>It's not.</strong></h2>
+    <p class="subtext">Transparency and privacy are built in from the start</p>
+  </div>
+  <div class="privacy-grid">
+    <div class="privacy-item reveal-scale" data-step="1">
+      <span class="material-symbols-outlined" style="color:var(--gc-blue);">folder_open</span>
+      <div>
+        <h3>Locally Stored</h3>
+        <p>All skills live on your machine. No external servers, no cloud dependencies for your personal data.</p>
+      </div>
+    </div>
+    <div class="privacy-item reveal-scale" data-step="1">
+      <span class="material-symbols-outlined" style="color:var(--gc-green);">description</span>
+      <div>
+        <h3>Plain Text</h3>
+        <p>Skills are human-readable files. Open them, read them, edit them. No black boxes.</p>
+      </div>
+    </div>
+    <div class="privacy-item reveal-scale" data-step="2">
+      <span class="material-symbols-outlined" style="color:var(--gc-red);">lock</span>
+      <div>
+        <h3>Your Data, Your Control</h3>
+        <p>Personal conventions and preferences never leave your environment. Full data sovereignty.</p>
+      </div>
+    </div>
+    <div class="privacy-item reveal-scale" data-step="2">
+      <span class="material-symbols-outlined" style="color:var(--gc-purple);">public</span>
+      <div>
+        <h3>Universal Skills</h3>
+        <p>Works everywhere — Google Cloud, frontend, data science, DevOps. Not locked to any one platform.</p>
+      </div>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 13: Simplicity Wins - Section -->
+<div class="slide colored-bg" id="slide-13" style="background:var(--gc-yellow);">
+  <div class="gc-logo"><span style="color:var(--gc-text)">G</span><span style="color:var(--gc-text)">o</span><span style="color:var(--gc-text)">o</span><span style="color:var(--gc-text)">g</span><span style="color:var(--gc-text)">l</span><span style="color:var(--gc-text)">e</span> <span style="color:var(--gc-secondary)">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <div class="section-number" style="color:var(--gc-text);">03</div>
+    <div class="section-title" style="color:var(--gc-text);">The power of simplicity</div>
+    <p class="section-subtitle" style="color:var(--gc-secondary);">Don't underestimate what text files can do</p>
+  </div>
+  <div class="edge-dots">
+    <div class="edge-dot" style="background:rgba(0,0,0,0.15);"></div><div class="edge-dot" style="background:rgba(0,0,0,0.15);"></div><div class="edge-dot" style="background:rgba(0,0,0,0.15);"></div><div class="edge-dot" style="background:rgba(0,0,0,0.15);"></div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 14: Simplicity is Winning -->
+<div class="slide" id="slide-14">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <h2>Progress doesn't have to be <strong>complicated</strong></h2>
+    <p class="subtext">What's simple is what's being adopted — and becoming the standard</p>
+  </div>
+  <div class="card-grid cols-2" style="margin-top:28px;">
+    <div class="card blue-top reveal-scale" data-step="1" style="display:flex;flex-direction:column;gap:16px;">
+      <div class="gc-badge blue lg">
+        <span class="material-symbols-outlined">description</span>
+      </div>
+      <h3>Simple is <strong>winning</strong></h3>
+      <p style="font-size:0.95rem;color:var(--gc-secondary);line-height:1.6;">In the AI field today, what's simple — think text files — is what's being adopted, winning the community vote, and becoming a standard across vendors.</p>
+    </div>
+    <div class="card green-top reveal-scale" data-step="2" style="display:flex;flex-direction:column;gap:16px;">
+      <div class="gc-badge green lg">
+        <span class="material-symbols-outlined">chat</span>
+      </div>
+      <h3>AI makes everything <strong>natural language</strong></h3>
+      <p style="font-size:0.95rem;color:var(--gc-secondary);line-height:1.6;">In a world of complexity, what AI is most helpful and impactful at is making everything natural language compliant. No syntax to learn. Just say what you need.</p>
+    </div>
+  </div>
+  <div class="reveal" data-step="3" style="margin-top:24px;width:100%;">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      <div class="skill-chip blue"><span class="material-symbols-outlined">smart_toy</span> Agents</div>
+      <div class="skill-chip green"><span class="material-symbols-outlined">extension</span> Extensions</div>
+      <div class="skill-chip purple"><span class="material-symbols-outlined">auto_awesome</span> Skills</div>
+      <div class="skill-chip red"><span class="material-symbols-outlined">terminal</span> Slash Commands</div>
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;font-size:0.9rem;font-weight:600;color:var(--gc-secondary);">
+        <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span> All plain text
+      </div>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 15: Don't Underestimate - Dark dramatic -->
+<div class="slide dark-bg centered" id="slide-15">
+  <div class="gc-logo"><span style="color:rgba(255,255,255,0.7)">G</span><span style="color:rgba(255,255,255,0.5)">o</span><span style="color:rgba(255,255,255,0.5)">o</span><span style="color:rgba(255,255,255,0.7)">g</span><span style="color:rgba(255,255,255,0.5)">l</span><span style="color:rgba(255,255,255,0.5)">e</span> <span style="color:rgba(255,255,255,0.4)">Cloud</span></div>
+  <div class="reveal-blur" data-step="0" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <p class="main-statement" style="color:rgba(255,255,255,0.6);max-width:70%;text-align:center;font-size:1.6rem;">
+      Don't underestimate simplicity.
+    </p>
+  </div>
+  <div class="reveal" data-step="1" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;margin-top:32px;">
+    <h1 style="color:#fff;font-size:2.8rem;">What can you do with just<br>a bunch of <strong style="color:var(--gc-yellow);">text files</strong>?</h1>
+  </div>
+  <div class="reveal" data-step="2" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;margin-top:28px;">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+      <div style="padding:12px 20px;background:rgba(255,255,255,0.08);border-radius:8px;color:rgba(255,255,255,0.9);font-size:0.9rem;display:flex;align-items:center;gap:8px;">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--gc-blue-200);">slideshow</span> Build presentations
+      </div>
+      <div style="padding:12px 20px;background:rgba(255,255,255,0.08);border-radius:8px;color:rgba(255,255,255,0.9);font-size:0.9rem;display:flex;align-items:center;gap:8px;">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--gc-green);">cloud</span> Deploy infrastructure
+      </div>
+      <div style="padding:12px 20px;background:rgba(255,255,255,0.08);border-radius:8px;color:rgba(255,255,255,0.9);font-size:0.9rem;display:flex;align-items:center;gap:8px;">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--gc-yellow);">science</span> Run experiments
+      </div>
+      <div style="padding:12px 20px;background:rgba(255,255,255,0.08);border-radius:8px;color:rgba(255,255,255,0.9);font-size:0.9rem;display:flex;align-items:center;gap:8px;">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--gc-coral);">analytics</span> Analyze data
+      </div>
+      <div style="padding:12px 20px;background:rgba(255,255,255,0.08);border-radius:8px;color:rgba(255,255,255,0.9);font-size:0.9rem;display:flex;align-items:center;gap:8px;">
+        <span class="material-symbols-outlined" style="font-size:18px;color:var(--gc-lavender);">code</span> Write applications
+      </div>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 16: Key Takeaway - Dark -->
+<div class="slide dark-bg centered" id="slide-16">
+  <div class="gc-logo"><span style="color:rgba(255,255,255,0.7)">G</span><span style="color:rgba(255,255,255,0.5)">o</span><span style="color:rgba(255,255,255,0.5)">o</span><span style="color:rgba(255,255,255,0.7)">g</span><span style="color:rgba(255,255,255,0.5)">l</span><span style="color:rgba(255,255,255,0.5)">e</span> <span style="color:rgba(255,255,255,0.4)">Cloud</span></div>
+  <div class="reveal-blur" data-step="0" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div class="gc-badge blue lg" style="margin-bottom:24px;">
+      <span class="material-symbols-outlined" style="font-size:36px;">code_off</span>
+    </div>
+    <h1 style="color:#fff;font-size:3rem;">You don't have to be<br>a <strong style="color:var(--gc-blue-200);">developer</strong>.</h1>
+  </div>
+  <div class="reveal" data-step="1" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;margin-top:24px;">
+    <p style="color:rgba(255,255,255,0.7);font-size:1.2rem;max-width:55%;text-align:center;">
+      The platform does the heavy lifting. You focus on what matters — your research, your teaching, your discoveries.
+    </p>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 17: STRIVE x Platform - AI Across All Domains -->
+<div class="slide" id="slide-17">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <p class="label-upper" style="color:var(--gc-blue);margin-bottom:12px;">What's Next — The Bigger Picture</p>
+    <h2 style="font-size:2rem;">One platform.<br><strong>Five</strong> research frontiers.</h2>
+    <p class="subtext" style="margin-top:8px;max-width:60%;">The SUNY AI Platform doesn't just serve AI researchers — it accelerates <em>every</em> STRIVE priority.</p>
+  </div>
+  <div class="reveal-scale" data-step="1" style="width:100%;display:flex;justify-content:center;margin-top:28px;">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;max-width:920px;">
+      <div class="strive-card" style="border-top:3px solid var(--gc-blue);">
+        <span class="material-symbols-outlined strive-icon" style="color:var(--gc-blue);">psychology</span>
+        <h3>Artificial<br>Intelligence</h3>
+        <p>LLM research, computer vision, NLP across 64 campuses</p>
+      </div>
+      <div class="strive-card" style="border-top:3px solid var(--gc-green);">
+        <span class="material-symbols-outlined strive-icon" style="color:var(--gc-green);">biotech</span>
+        <h3>Biotech &amp;<br>Biomanufacturing</h3>
+        <p>AI-accelerated drug discovery &amp; genomics research</p>
+      </div>
+      <div class="strive-card" style="border-top:3px solid var(--gc-purple);">
+        <span class="material-symbols-outlined strive-icon" style="color:var(--gc-purple);">memory</span>
+        <h3>Micro&shy;electronics<br>Packaging</h3>
+        <p>AI-driven chip design &amp; semiconductor innovation</p>
+      </div>
+      <div class="strive-card" style="border-top:3px solid var(--gc-coral);">
+        <span class="material-symbols-outlined strive-icon" style="color:var(--gc-coral);">blur_on</span>
+        <h3>Quantum<br>Science</h3>
+        <p>Quantum-classical hybrid computing &amp; simulation</p>
+      </div>
+      <div class="strive-card" style="border-top:3px solid var(--gc-teal);">
+        <span class="material-symbols-outlined strive-icon" style="color:var(--gc-teal);">eco</span>
+        <h3>Climate &amp;<br>Sustainability</h3>
+        <p>Climate modeling, energy systems &amp; environmental data</p>
+      </div>
+    </div>
+  </div>
+  <div class="reveal" data-step="2" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;margin-top:24px;">
+    <div style="display:flex;align-items:center;gap:12px;padding:14px 28px;background:var(--gc-surface);border-radius:10px;border:1px solid var(--gc-border);">
+      <span class="material-symbols-outlined" style="color:var(--gc-blue);font-size:22px;">hub</span>
+      <span style="font-size:0.95rem;color:var(--gc-text);font-weight:500;">One investment → Skills auto-update for each domain → Researchers stay focused on <strong>their science</strong></span>
+    </div>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 18: Live Example -->
+<div class="slide" id="slide-18">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal" data-step="0">
+    <p class="subtext">This entire presentation was created using natural language</p>
+  </div>
+  <div class="reveal-scale" data-step="1" style="width:100%;display:flex;justify-content:center;">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dot red"></div>
+        <div class="terminal-dot yellow"></div>
+        <div class="terminal-dot green"></div>
+      </div>
+      <div class="terminal-body">
+        <span class="prompt">$ </span><span class="command">claude</span><br>
+        <br>
+        <span class="comment"># No code. Just a conversation.</span><br>
+        <br>
+        <span class="prompt">&gt; </span><span class="command">"Create a presentation for SUNY on</span><br>
+        <span class="command">&nbsp;&nbsp;What's Next with the AI Platform.</span><br>
+        <span class="command">&nbsp;&nbsp;Use the Google Cloud theme."</span><br>
+        <br>
+        <span class="output">Building your deck...</span><br>
+        <span class="output">Researching latest Cloud Next 2026 updates...</span><br>
+        <span class="output">Generating 19 slides with animations...</span><br>
+        <br>
+        <span class="output" style="color:var(--gc-green);">&#10003; Presentation saved to suny-ai-platform-next.html</span>
+      </div>
+    </div>
+  </div>
+  <div class="reveal" data-step="2" style="margin-top:20px;text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <p style="font-size:1rem;color:var(--gc-secondary);">
+      <span class="material-symbols-outlined" style="vertical-align:-4px;color:var(--gc-blue);margin-right:4px;">lightbulb</span>
+      From plain English to polished slides — that's the power of skills
+    </p>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 19: Consumption Pathways -->
+<div class="slide" id="slide-19">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+
+  <!-- Step 0: Title -->
+  <div class="reveal" data-step="0" style="width:100%;">
+    <p style="color:var(--gc-blue);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Planning Together</p>
+    <h2 style="font-size:1.85rem;">Four Workstreams to Plan Around</h2>
+    <p class="subtext" style="margin-top:6px;font-size:1rem;">Each area has its own timeline and dependencies — let's align on what's realistic.</p>
+  </div>
+
+  <!-- Step 1: Four Workload Cards -->
+  <div class="reveal-scale" data-step="1" style="width:100%;margin-top:28px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:var(--gc-surface);border-radius:var(--radius);padding:24px;border:1px solid rgba(0,0,0,0.06);border-left:4px solid var(--gc-blue);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span class="material-symbols-outlined" style="font-size:24px;color:var(--gc-blue);">science</span>
+          <h3 style="font-size:1.05rem;">Existing Researchers <span style="font-weight:400;color:var(--gc-secondary);font-size:0.85rem;">— Phase 1</span></h3>
+        </div>
+        <p style="font-size:0.88rem;color:var(--gc-secondary);line-height:1.6;">Being brought back online for select researchers from the initial phase.</p>
+      </div>
+      <div style="background:var(--gc-surface);border-radius:var(--radius);padding:24px;border:1px solid rgba(0,0,0,0.06);border-left:4px solid var(--gc-green);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span class="material-symbols-outlined" style="font-size:24px;color:var(--gc-green);">group_add</span>
+          <h3 style="font-size:1.05rem;">Net New Researchers <span style="font-weight:400;color:var(--gc-secondary);font-size:0.85rem;">— Phase 2</span></h3>
+        </div>
+        <p style="font-size:0.88rem;color:var(--gc-secondary);line-height:1.6;">New researchers onboarding once the AI Platform is rolled out. Depends on platform readiness and campus adoption.</p>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:8px;">
+          <span class="material-symbols-outlined" style="font-size:16px;color:var(--gc-green);">help_outline</span>
+          <span style="font-size:0.78rem;color:var(--gc-green);font-weight:500;font-style:italic;">Timeline for RFP? Selection process? Which campuses go first?</span>
+        </div>
+      </div>
+      <div style="background:var(--gc-surface);border-radius:var(--radius);padding:24px;border:1px solid rgba(0,0,0,0.06);border-left:4px solid var(--gc-purple);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span class="material-symbols-outlined" style="font-size:24px;color:var(--gc-purple);">smart_toy</span>
+          <h3 style="font-size:1.05rem;">Gemini Enterprise</h3>
+        </div>
+        <p style="font-size:0.88rem;color:var(--gc-secondary);line-height:1.6;">Productivity AI for all SUNY users — ~2,000 users once onboarding begins.</p>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:8px;">
+          <span class="material-symbols-outlined" style="font-size:16px;color:var(--gc-purple);">help_outline</span>
+          <span style="font-size:0.78rem;color:var(--gc-purple);font-weight:500;font-style:italic;">Roll out plan? Phases of onboarding?</span>
+        </div>
+      </div>
+      <div style="background:var(--gc-surface);border-radius:var(--radius);padding:24px;border:1px solid rgba(0,0,0,0.06);border-left:4px solid var(--gc-teal);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span class="material-symbols-outlined" style="font-size:24px;color:var(--gc-teal);">description</span>
+          <h3 style="font-size:1.05rem;">Grants AI</h3>
+        </div>
+        <p style="font-size:0.88rem;color:var(--gc-secondary);line-height:1.6;">AI-assisted grant writing and research support. Available once fully operational.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Discussion prompt -->
+  <div class="reveal" data-step="2" style="width:100%;margin-top:24px;">
+    <div style="display:flex;align-items:center;gap:12px;padding:16px 24px;background:rgba(66,133,244,0.05);border-radius:var(--radius);border:2px solid var(--gc-blue);">
+      <span class="material-symbols-outlined" style="font-size:24px;color:var(--gc-blue);">forum</span>
+      <div>
+        <p style="font-size:0.95rem;font-weight:600;color:var(--gc-text);margin-bottom:2px;">Let's map this out together</p>
+        <p style="font-size:0.82rem;color:var(--gc-secondary);">What are the realistic timelines for each area? Where do you want to prioritize? What blockers should we plan around?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 20: Thank You -->
+<div class="slide centered" id="slide-20">
+  <div class="gc-logo" style="font-size:16px;"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+  <div class="reveal-blur" data-step="0" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <h1 style="font-size: 3.5rem;">Thank you</h1>
+    <p class="subtext" style="margin-top:16px;">Let's build the future of SUNY research together</p>
+  </div>
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- Progress & Slide Number -->
+<div class="progress" id="progress"></div>
+<div class="slide-number" id="slideNumber">1 / 20</div>
+
+<script>
+const totalSlides = 20;
+let current = 0;
+let revealStep = {};
+for (let i = 0; i < totalSlides; i++) revealStep[i] = -1;
+
+const progress = document.getElementById('progress');
+for (let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', (e) => { e.stopPropagation(); goTo(i); });
+  progress.appendChild(dot);
+}
+
+function getMaxStep(slideIdx) {
+  const slide = document.querySelectorAll('.slide')[slideIdx];
+  const reveals = slide.querySelectorAll('[data-step]');
+  let max = -1;
+  reveals.forEach(r => { max = Math.max(max, parseInt(r.dataset.step)); });
+  return max;
+}
+
+function showReveals(slideIdx, upToStep, animate) {
+  const slide = document.querySelectorAll('.slide')[slideIdx];
+  const reveals = slide.querySelectorAll('[data-step]');
+  reveals.forEach(r => {
+    const step = parseInt(r.dataset.step);
+    if (step <= upToStep) {
+      r.classList.add(animate ? 'shown' : 'shown-fast');
+      r.classList.remove(animate ? 'shown-fast' : '');
+    } else {
+      r.classList.remove('shown', 'shown-fast');
+    }
+  });
+}
+
+function goTo(n, direction) {
+  const slides = document.querySelectorAll('.slide');
+  if (n === current && direction === undefined) {
+    const maxStep = getMaxStep(current);
+    revealStep[current] = maxStep;
+    showReveals(current, maxStep, false);
+    return;
+  }
+  slides[current].classList.remove('active');
+  progress.children[current].classList.remove('active');
+  current = Math.max(0, Math.min(n, totalSlides - 1));
+  slides[current].classList.add('active');
+  progress.children[current].classList.add('active');
+  document.getElementById('slideNumber').textContent = (current + 1) + ' / ' + totalSlides;
+
+  if (direction === 'back') {
+    const maxStep = getMaxStep(current);
+    revealStep[current] = maxStep;
+    showReveals(current, maxStep, false);
+  } else {
+    revealStep[current] = -1;
+    showReveals(current, -1, false);
+    advance();
+  }
+}
+
+function advance() {
+  const maxStep = getMaxStep(current);
+  if (revealStep[current] < maxStep) {
+    revealStep[current]++;
+    showReveals(current, revealStep[current], true);
+    return true;
+  }
+  return false;
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+    e.preventDefault();
+    if (!advance()) {
+      if (current < totalSlides - 1) goTo(current + 1, 'forward');
+    }
+  }
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    if (current > 0) goTo(current - 1, 'back');
+  }
+  if (e.key === 'f') document.documentElement.requestFullscreen?.();
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.progress')) return;
+  if (e.detail === 2) { document.documentElement.requestFullscreen?.(); return; }
+  if (!advance()) {
+    if (current < totalSlides - 1) goTo(current + 1, 'forward');
+  }
+});
+
+let cursorTimer;
+document.addEventListener('mousemove', () => {
+  document.body.classList.add('cursor-visible');
+  clearTimeout(cursorTimer);
+  cursorTimer = setTimeout(() => document.body.classList.remove('cursor-visible'), 3000);
+});
+
+advance();
+</script>
+</body>
+</html>
