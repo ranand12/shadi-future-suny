@@ -1546,8 +1546,246 @@ strong { color: var(--gc-blue); font-weight: 700; }
   <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
 </div>
 
-<!-- SLIDE 20: Thank You -->
-<div class="slide centered" id="slide-20">
+<!-- SLIDE 20: Consumption Ramp Chart -->
+<div class="slide" id="slide-20">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+
+  <div class="reveal" data-step="0" style="width:100%;">
+    <p style="color:var(--gc-blue);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Reference Estimate</p>
+    <h2 style="font-size:1.85rem;">One Possible Ramp — <strong>CY2026</strong></h2>
+    <p class="subtext" style="margin-top:6px;font-size:0.95rem;">Based on current assumptions. Actual pace depends on the decisions we make together.</p>
+  </div>
+
+  <!-- Stacked Bar Chart -->
+  <div class="reveal-scale" data-step="1" style="width:100%;margin-top:20px;">
+    <div style="display:flex;align-items:flex-end;gap:10px;height:260px;padding:0 10px;border-bottom:2px solid var(--gc-gray-200);position:relative;">
+      <!-- Y-axis labels -->
+      <div style="position:absolute;left:-4px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;font-size:0.6rem;color:var(--gc-secondary);padding-bottom:4px;">
+        <span>$500K</span><span>$400K</span><span>$300K</span><span>$200K</span><span>$100K</span><span>$0</span>
+      </div>
+      <!-- Grid lines -->
+      <div style="position:absolute;left:40px;right:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;">
+        <div style="border-bottom:1px dashed var(--gc-gray-200);"></div>
+        <div style="border-bottom:1px dashed var(--gc-gray-200);"></div>
+        <div style="border-bottom:1px dashed var(--gc-gray-200);"></div>
+        <div style="border-bottom:1px dashed var(--gc-gray-200);"></div>
+        <div style="border-bottom:1px dashed var(--gc-gray-200);"></div>
+        <div></div>
+      </div>
+      <!-- Bars - each month is a stacked column. Max ~467K, so 500K = 100% height (252px) -->
+      <!-- Apr: P1=50 -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;margin-left:44px;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:25px;background:var(--gc-blue);border-radius:4px 4px 0 0;" title="Phase 1: $50K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">Apr</span>
+      </div>
+      <!-- May: P1=50 -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:25px;background:var(--gc-blue);border-radius:4px 4px 0 0;" title="Phase 1: $50K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">May</span>
+      </div>
+      <!-- Jun: P1=80, Grants=1 = 81K -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:1px;background:var(--gc-teal);border-radius:4px 4px 0 0;" title="Grants AI: $1K"></div>
+          <div style="height:40px;background:var(--gc-blue);" title="Phase 1: $80K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">Jun</span>
+      </div>
+      <!-- Jul: P1=100, P2=50, Gem=20, Grants=2 = 172K -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:1px;background:var(--gc-teal);border-radius:4px 4px 0 0;" title="Grants AI: $2K"></div>
+          <div style="height:10px;background:var(--gc-purple);" title="Gemini: $20K"></div>
+          <div style="height:25px;background:var(--gc-green);" title="Phase 2: $50K"></div>
+          <div style="height:50px;background:var(--gc-blue);" title="Phase 1: $100K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">Jul</span>
+      </div>
+      <!-- Aug: P1=120, P2=80, Gem=30, Grants=2 = 232K -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:1px;background:var(--gc-teal);border-radius:4px 4px 0 0;" title="Grants AI: $2K"></div>
+          <div style="height:15px;background:var(--gc-purple);" title="Gemini: $30K"></div>
+          <div style="height:40px;background:var(--gc-green);" title="Phase 2: $80K"></div>
+          <div style="height:60px;background:var(--gc-blue);" title="Phase 1: $120K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">Aug</span>
+      </div>
+      <!-- Sep: P1=140, P2=120, Gem=35, Grants=2 = 297K -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:1px;background:var(--gc-teal);border-radius:4px 4px 0 0;" title="Grants AI: $2K"></div>
+          <div style="height:18px;background:var(--gc-purple);" title="Gemini: $35K"></div>
+          <div style="height:60px;background:var(--gc-green);" title="Phase 2: $120K"></div>
+          <div style="height:70px;background:var(--gc-blue);" title="Phase 1: $140K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">Sep</span>
+      </div>
+      <!-- Oct: P1=150, P2=160, Gem=35, Grants=2 = 347K -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:1px;background:var(--gc-teal);border-radius:4px 4px 0 0;" title="Grants AI: $2K"></div>
+          <div style="height:18px;background:var(--gc-purple);" title="Gemini: $35K"></div>
+          <div style="height:80px;background:var(--gc-green);" title="Phase 2: $160K"></div>
+          <div style="height:76px;background:var(--gc-blue);" title="Phase 1: $150K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">Oct</span>
+      </div>
+      <!-- Nov: P1=170, P2=200, Gem=35, Grants=2 = 407K -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:1px;background:var(--gc-teal);border-radius:4px 4px 0 0;" title="Grants AI: $2K"></div>
+          <div style="height:18px;background:var(--gc-purple);" title="Gemini: $35K"></div>
+          <div style="height:100px;background:var(--gc-green);" title="Phase 2: $200K"></div>
+          <div style="height:86px;background:var(--gc-blue);" title="Phase 1: $170K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">Nov</span>
+      </div>
+      <!-- Dec: P1=180, P2=250, Gem=35, Grants=2 = 467K -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;">
+        <div style="width:100%;max-width:48px;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="height:1px;background:var(--gc-teal);border-radius:4px 4px 0 0;" title="Grants AI: $2K"></div>
+          <div style="height:18px;background:var(--gc-purple);" title="Gemini: $35K"></div>
+          <div style="height:126px;background:var(--gc-green);" title="Phase 2: $250K"></div>
+          <div style="height:91px;background:var(--gc-blue);" title="Phase 1: $180K"></div>
+        </div>
+        <span style="font-size:0.6rem;color:var(--gc-secondary);margin-top:6px;">Dec</span>
+      </div>
+    </div>
+    <!-- Legend -->
+    <div style="display:flex;gap:20px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:6px;font-size:0.7rem;color:var(--gc-text);font-weight:500;"><div style="width:12px;height:12px;border-radius:2px;background:var(--gc-blue);"></div> Phase 1 Researchers</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:0.7rem;color:var(--gc-text);font-weight:500;"><div style="width:12px;height:12px;border-radius:2px;background:var(--gc-green);"></div> Phase 2 Researchers</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:0.7rem;color:var(--gc-text);font-weight:500;"><div style="width:12px;height:12px;border-radius:2px;background:var(--gc-purple);"></div> Gemini Enterprise</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:0.7rem;color:var(--gc-text);font-weight:500;"><div style="width:12px;height:12px;border-radius:2px;background:var(--gc-teal);"></div> Grants AI</div>
+      <div style="font-size:0.7rem;color:var(--gc-blue);font-weight:700;margin-left:12px;">CY2026 Total: $2.1M</div>
+    </div>
+  </div>
+
+  <div class="reveal" data-step="2" style="width:100%;margin-top:16px;">
+    <div style="display:flex;align-items:center;gap:12px;padding:14px 24px;background:var(--gc-surface);border-radius:var(--radius);border:1px solid var(--gc-border);">
+      <span class="material-symbols-outlined" style="font-size:20px;color:var(--gc-secondary);">info</span>
+      <p style="font-size:0.82rem;color:var(--gc-secondary);margin:0;">$3.7M annual commitment (Apr '26 – Apr '27) · CY2026 pro-rata = $2.775M over 9 months · This estimate reflects <strong style="color:var(--gc-text);">one possible ramp</strong> — timelines shift based on today's discussion.</p>
+    </div>
+  </div>
+
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 21: Consumption Ramp Table -->
+<div class="slide" id="slide-21">
+  <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
+
+  <div class="reveal" data-step="0" style="width:100%;">
+    <p style="color:var(--gc-blue);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Reference Estimate — Detail</p>
+    <h2 style="font-size:1.85rem;">Monthly Breakdown — <strong>Apr to Dec 2026</strong></h2>
+  </div>
+
+  <div class="reveal-scale" data-step="1" style="width:100%;margin-top:24px;">
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.72rem;text-align:right;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--gc-border);">
+            <th style="text-align:left;padding:8px 10px;font-weight:700;color:var(--gc-text);font-size:0.78rem;">Workload</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">Apr</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">May</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">Jun</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">Jul</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">Aug</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">Sep</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">Oct</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">Nov</th>
+            <th style="padding:8px 6px;color:var(--gc-secondary);">Dec</th>
+            <th style="padding:8px 10px;font-weight:700;color:var(--gc-text);font-size:0.78rem;">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--gc-gray-200);">
+            <td style="text-align:left;padding:10px 10px;font-weight:600;color:var(--gc-blue);"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px;margin-right:4px;">science</span> Phase 1 Researchers</td>
+            <td style="padding:10px 6px;">$50K</td>
+            <td style="padding:10px 6px;">$50K</td>
+            <td style="padding:10px 6px;">$80K</td>
+            <td style="padding:10px 6px;">$100K</td>
+            <td style="padding:10px 6px;">$120K</td>
+            <td style="padding:10px 6px;">$140K</td>
+            <td style="padding:10px 6px;">$150K</td>
+            <td style="padding:10px 6px;">$170K</td>
+            <td style="padding:10px 6px;">$180K</td>
+            <td style="padding:10px 10px;font-weight:700;color:var(--gc-text);">$1.04M</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gc-gray-200);">
+            <td style="text-align:left;padding:10px 10px;font-weight:600;color:var(--gc-green);"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px;margin-right:4px;">group_add</span> Phase 2 Researchers</td>
+            <td style="padding:10px 6px;color:var(--gc-secondary);">—</td>
+            <td style="padding:10px 6px;color:var(--gc-secondary);">—</td>
+            <td style="padding:10px 6px;color:var(--gc-secondary);">—</td>
+            <td style="padding:10px 6px;">$50K</td>
+            <td style="padding:10px 6px;">$80K</td>
+            <td style="padding:10px 6px;">$120K</td>
+            <td style="padding:10px 6px;">$160K</td>
+            <td style="padding:10px 6px;">$200K</td>
+            <td style="padding:10px 6px;">$250K</td>
+            <td style="padding:10px 10px;font-weight:700;color:var(--gc-text);">$860K</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gc-gray-200);">
+            <td style="text-align:left;padding:10px 10px;font-weight:600;color:var(--gc-purple);"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px;margin-right:4px;">smart_toy</span> Gemini Enterprise</td>
+            <td style="padding:10px 6px;color:var(--gc-secondary);">—</td>
+            <td style="padding:10px 6px;color:var(--gc-secondary);">—</td>
+            <td style="padding:10px 6px;color:var(--gc-secondary);">—</td>
+            <td style="padding:10px 6px;">$20K</td>
+            <td style="padding:10px 6px;">$30K</td>
+            <td style="padding:10px 6px;">$35K</td>
+            <td style="padding:10px 6px;">$35K</td>
+            <td style="padding:10px 6px;">$35K</td>
+            <td style="padding:10px 6px;">$35K</td>
+            <td style="padding:10px 10px;font-weight:700;color:var(--gc-text);">$190K</td>
+          </tr>
+          <tr style="border-bottom:2px solid var(--gc-border);">
+            <td style="text-align:left;padding:10px 10px;font-weight:600;color:var(--gc-teal);"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px;margin-right:4px;">description</span> Grants AI</td>
+            <td style="padding:10px 6px;color:var(--gc-secondary);">—</td>
+            <td style="padding:10px 6px;color:var(--gc-secondary);">—</td>
+            <td style="padding:10px 6px;">$1K</td>
+            <td style="padding:10px 6px;">$2K</td>
+            <td style="padding:10px 6px;">$2K</td>
+            <td style="padding:10px 6px;">$2K</td>
+            <td style="padding:10px 6px;">$2K</td>
+            <td style="padding:10px 6px;">$2K</td>
+            <td style="padding:10px 6px;">$2K</td>
+            <td style="padding:10px 10px;font-weight:700;color:var(--gc-text);">$13K</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;padding:12px 10px;font-weight:700;color:var(--gc-text);font-size:0.8rem;">Monthly Total</td>
+            <td style="padding:12px 6px;font-weight:700;">$50K</td>
+            <td style="padding:12px 6px;font-weight:700;">$50K</td>
+            <td style="padding:12px 6px;font-weight:700;">$81K</td>
+            <td style="padding:12px 6px;font-weight:700;">$172K</td>
+            <td style="padding:12px 6px;font-weight:700;">$232K</td>
+            <td style="padding:12px 6px;font-weight:700;">$297K</td>
+            <td style="padding:12px 6px;font-weight:700;">$347K</td>
+            <td style="padding:12px 6px;font-weight:700;">$407K</td>
+            <td style="padding:12px 6px;font-weight:700;">$467K</td>
+            <td style="padding:12px 10px;font-weight:700;color:var(--gc-blue);font-size:0.85rem;">$2.1M</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="reveal" data-step="2" style="width:100%;margin-top:20px;">
+    <div style="display:flex;align-items:center;gap:12px;padding:14px 24px;background:var(--gc-surface);border-radius:var(--radius);border:1px solid var(--gc-border);">
+      <span class="material-symbols-outlined" style="font-size:20px;color:var(--gc-secondary);">info</span>
+      <p style="font-size:0.82rem;color:var(--gc-secondary);margin:0;">$3.7M annual commitment (Apr '26 – Apr '27) · CY2026 pro-rata = $2.775M over 9 months · This estimate reflects <strong style="color:var(--gc-text);">one possible ramp</strong> — timelines shift based on today's discussion.</p>
+    </div>
+  </div>
+
+  <div class="gc-banner"><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div><div class="gc-band"></div></div>
+</div>
+
+<!-- SLIDE 22: Thank You -->
+<div class="slide centered" id="slide-22">
   <div class="gc-logo" style="font-size:16px;"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
   <div class="reveal-blur" data-step="0" style="text-align:center;width:100%;display:flex;flex-direction:column;align-items:center;">
     <h1 style="font-size: 3.5rem;">Thank you</h1>
@@ -1558,10 +1796,10 @@ strong { color: var(--gc-blue); font-weight: 700; }
 
 <!-- Progress & Slide Number -->
 <div class="progress" id="progress"></div>
-<div class="slide-number" id="slideNumber">1 / 20</div>
+<div class="slide-number" id="slideNumber">1 / 22</div>
 
 <script>
-const totalSlides = 20;
+const totalSlides = 22;
 let current = 0;
 let revealStep = {};
 for (let i = 0; i < totalSlides; i++) revealStep[i] = -1;
