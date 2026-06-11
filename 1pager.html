@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUNY ASAP|ACE + Google Cloud AI — Executive One-Pager</title>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<title>SUNY Student Success AI Platform — Executive Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
 <style>
 :root {
   --gc-blue: #4285F4;
@@ -12,411 +13,610 @@
   --gc-yellow: #FBBC04;
   --gc-green: #34A853;
   --gc-dark-blue: #185ABC;
+  --gc-purple: #8E24AA;
+  --gc-teal: #00897B;
   --gc-text: #202124;
   --gc-secondary: #5F6368;
-  --gc-border: #BDC1C6;
+  --gc-border: #D9D9D9;
   --gc-surface: #F8F9FA;
-  --gc-purple: #8E24AA;
+  --font: 'Google Sans', Arial, sans-serif;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+@page { size: letter; margin: 0; }
 body {
-  font-family: 'Google Sans', Arial, sans-serif;
+  font-family: var(--font);
   color: var(--gc-text);
-  background: #fff;
+  background: #e8eaed;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 .page {
-  max-width: 8.5in;
-  margin: 0 auto;
-  padding: 0.4in 0.5in 0.35in;
+  width: 8.5in;
+  min-height: 11in;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.12);
 }
 @media print {
-  body { background: #fff; }
-  .page { max-width: none; padding: 0.3in 0.45in 0.3in; }
-  @page { size: letter; margin: 0; }
+  body { background: #fff; padding: 0; }
+  .page { box-shadow: none; width: 100%; min-height: auto; }
 }
 
 /* Header */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 3px solid var(--gc-blue);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
+  background: var(--gc-text);
+  color: #fff;
+  padding: 24px 36px 20px;
+  position: relative;
 }
-.header h1 {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--gc-text);
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gc-blue) 25%, var(--gc-red) 25% 50%, var(--gc-yellow) 50% 75%, var(--gc-green) 75%);
 }
-.header h1 strong { color: var(--gc-blue); }
-.header .meta {
-  text-align: right;
-  font-size: 10px;
-  color: var(--gc-secondary);
-  white-space: nowrap;
-}
-.gc-logo-print {
+.gc-logo {
   font-size: 13px;
   font-weight: 500;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
+  opacity: 0.85;
 }
-
-/* Headline stat bar */
-.stat-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.stat-bar .stat-item {
-  text-align: center;
-  padding: 10px 8px;
-  border-radius: 8px;
-  background: var(--gc-surface);
-}
-.stat-item .number {
-  font-size: 22px;
+.header h1 {
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1;
-}
-.stat-item .label {
-  font-size: 9px;
-  color: var(--gc-secondary);
-  margin-top: 3px;
+  color: #fff;
+  letter-spacing: -0.02em;
   line-height: 1.3;
 }
+.header h1 span { color: var(--gc-blue); }
+.header .subtitle {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 6px;
+}
 
-/* Sections */
-.section-title {
+/* Content */
+.content {
+  padding: 20px 36px 16px;
+}
+
+/* Section headers */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  margin-top: 16px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--gc-surface);
+}
+.section-header:first-child { margin-top: 0; }
+.section-header .material-symbols-outlined {
+  font-size: 18px;
+  color: #fff;
+  background: var(--gc-blue);
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-header.green .material-symbols-outlined { background: var(--gc-green); }
+.section-header.purple .material-symbols-outlined { background: var(--gc-purple); }
+.section-header.red .material-symbols-outlined { background: var(--gc-red); }
+.section-header.teal .material-symbols-outlined { background: var(--gc-teal); }
+.section-header h2 {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 5px 12px;
-  border-radius: 4px;
-  margin-bottom: 8px;
-  display: inline-block;
+  letter-spacing: 0.06em;
+  color: var(--gc-text);
 }
-.section-title.blue { background: var(--gc-blue); color: #fff; }
-.section-title.green { background: var(--gc-green); color: #fff; }
-.section-title.red { background: var(--gc-red); color: #fff; }
-.section-title.purple { background: var(--gc-purple); color: #fff; }
-.section-title.dark-blue { background: var(--gc-dark-blue); color: #fff; }
 
+/* Stat strip */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.stat-item {
+  text-align: center;
+  padding: 10px 6px;
+  background: var(--gc-surface);
+  border-radius: 8px;
+  border-top: 3px solid var(--gc-blue);
+}
+.stat-item.green { border-top-color: var(--gc-green); }
+.stat-item.purple { border-top-color: var(--gc-purple); }
+.stat-item.red { border-top-color: var(--gc-red); }
+.stat-item .num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gc-blue);
+  line-height: 1;
+}
+.stat-item.green .num { color: var(--gc-green); }
+.stat-item.purple .num { color: var(--gc-purple); }
+.stat-item.red .num { color: var(--gc-red); }
+.stat-item .label {
+  font-size: 8px;
+  color: var(--gc-secondary);
+  margin-top: 3px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+/* Intro text */
+.intro {
+  font-size: 10.5px;
+  color: var(--gc-secondary);
+  line-height: 1.65;
+  margin-bottom: 4px;
+}
+.intro strong { color: var(--gc-text); }
+
+/* Two-column layout */
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 14px;
+  gap: 14px;
 }
-.three-col {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 14px;
+
+/* Compact card */
+.compact-card {
+  background: var(--gc-surface);
+  border-radius: 8px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--gc-blue);
 }
+.compact-card.green { border-left-color: var(--gc-green); }
+.compact-card.purple { border-left-color: var(--gc-purple); }
+.compact-card.red { border-left-color: var(--gc-red); }
+.compact-card.teal { border-left-color: var(--gc-teal); }
+.compact-card h3 {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--gc-text);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.compact-card h3 .material-symbols-outlined {
+  font-size: 15px;
+  color: var(--gc-blue);
+}
+.compact-card.green h3 .material-symbols-outlined { color: var(--gc-green); }
+.compact-card.purple h3 .material-symbols-outlined { color: var(--gc-purple); }
+.compact-card.red h3 .material-symbols-outlined { color: var(--gc-red); }
+.compact-card.teal h3 .material-symbols-outlined { color: var(--gc-teal); }
+.compact-card p, .compact-card li {
+  font-size: 9px;
+  color: var(--gc-secondary);
+  line-height: 1.55;
+}
+.compact-card ul {
+  padding-left: 14px;
+  margin: 0;
+}
+.compact-card li { margin-bottom: 1px; }
 
 /* Evidence table */
 .evidence-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 10px;
-  margin-bottom: 10px;
+  font-size: 9px;
+  margin-top: 4px;
 }
 .evidence-table th {
   background: var(--gc-blue);
   color: #fff;
   padding: 5px 8px;
-  text-align: left;
+  text-align: center;
   font-weight: 600;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 .evidence-table td {
   padding: 4px 8px;
   border-bottom: 1px solid #eee;
-}
-.evidence-table tr:nth-child(even) td { background: var(--gc-surface); }
-.evidence-table .highlight { color: var(--gc-blue); font-weight: 700; }
-
-/* Use case cards */
-.use-case-card {
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #eee;
-  background: #fff;
-}
-.use-case-card h4 {
-  font-size: 11px;
-  font-weight: 700;
-  margin-bottom: 3px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.use-case-card p {
-  font-size: 9px;
-  color: var(--gc-secondary);
-  line-height: 1.4;
-}
-.use-case-card .material-symbols-outlined {
-  font-size: 16px;
-}
-
-/* Phase cards */
-.phase-card {
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #eee;
-  background: #fff;
-}
-.phase-card .phase-header {
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin-bottom: 3px;
-}
-.phase-card .phase-cost {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--gc-blue);
-  margin-bottom: 3px;
-}
-.phase-card ul {
-  margin: 0;
-  padding-left: 14px;
-  font-size: 9px;
-  color: var(--gc-secondary);
-  line-height: 1.5;
-}
-
-/* ROI bar */
-.roi-bar {
-  background: linear-gradient(135deg, var(--gc-blue), var(--gc-dark-blue));
-  color: #fff;
-  border-radius: 8px;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-.roi-bar .roi-item {
   text-align: center;
 }
-.roi-bar .roi-number {
-  font-size: 20px;
-  font-weight: 700;
+.evidence-table tr:nth-child(even) td { background: var(--gc-surface); }
+.evidence-table td:first-child { text-align: left; font-weight: 600; }
+.evidence-table .highlight { color: var(--gc-blue); font-weight: 700; font-size: 10px; }
+
+/* Flow diagram */
+.flow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 8px 0;
 }
-.roi-bar .roi-label {
-  font-size: 8.5px;
-  opacity: 0.85;
-  margin-top: 2px;
+.flow-box {
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
 }
-.roi-bar .divider {
-  width: 1px;
-  height: 35px;
-  background: rgba(255,255,255,0.25);
+.flow-box .material-symbols-outlined { font-size: 16px; }
+.flow-box.blue { background: var(--gc-blue); }
+.flow-box.red { background: var(--gc-red); }
+.flow-box.yellow { background: var(--gc-yellow); color: var(--gc-text); }
+.flow-box.green { background: var(--gc-green); }
+.flow-box.dark-blue { background: var(--gc-dark-blue); }
+.flow-box.purple { background: var(--gc-purple); }
+.flow-box.teal { background: var(--gc-teal); }
+.flow-arrow {
+  width: 18px;
+  height: 0;
+  border-top: 1.5px solid var(--gc-border);
+  position: relative;
+  flex-shrink: 0;
+}
+.flow-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 4px solid transparent;
+  border-left: 5px solid var(--gc-border);
+}
+.flow-arrow.down {
+  width: 0;
+  height: 12px;
+  border-top: none;
+  border-left: 1.5px solid var(--gc-border);
+}
+.flow-arrow.down::after {
+  right: auto;
+  top: auto;
+  bottom: -1px;
+  left: -4px;
+  border: 4px solid transparent;
+  border-top: 5px solid var(--gc-border);
+  border-left: 4px solid transparent;
 }
 
-/* Gap callout */
-.gap-callout {
-  border-left: 3px solid var(--gc-red);
-  background: rgba(234,67,53,0.04);
-  padding: 8px 12px;
-  border-radius: 0 6px 6px 0;
-  margin-bottom: 14px;
+/* ROI box */
+.roi-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
 }
-.gap-callout p {
+.roi-box {
+  background: var(--gc-surface);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.roi-box h4 {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gc-secondary);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+.roi-box.invest { border-top: 3px solid var(--gc-red); }
+.roi-box.return { border-top: 3px solid var(--gc-green); }
+.roi-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5px;
+  padding: 2px 0;
+  color: var(--gc-secondary);
+}
+.roi-line .val { font-weight: 700; color: var(--gc-text); }
+.roi-total {
+  border-top: 1.5px solid var(--gc-border);
+  margin-top: 4px;
+  padding-top: 4px;
+  font-weight: 700;
+  font-size: 9px;
+}
+.roi-total .val { color: var(--gc-green); }
+.roi-total.red .val { color: var(--gc-red); }
+.roi-vs {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gc-blue);
+}
+.payback-badge {
+  text-align: center;
+  background: var(--gc-blue);
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 16px;
   font-size: 10px;
-  line-height: 1.5;
+  font-weight: 700;
+  margin-top: 8px;
+  display: inline-block;
 }
-.gap-callout strong { color: var(--gc-red); }
+
+/* Timeline */
+.timeline-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+.timeline-item {
+  text-align: center;
+  padding: 8px 6px;
+  background: var(--gc-surface);
+  border-radius: 6px;
+  position: relative;
+}
+.timeline-item .phase {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gc-blue);
+}
+.timeline-item.b .phase { color: var(--gc-green); }
+.timeline-item.c .phase { color: var(--gc-purple); }
+.timeline-item.d .phase { color: var(--gc-red); }
+.timeline-item .months {
+  font-size: 8px;
+  color: var(--gc-secondary);
+  font-weight: 600;
+  margin-top: 2px;
+}
+.timeline-item .desc {
+  font-size: 7.5px;
+  color: var(--gc-secondary);
+  margin-top: 4px;
+  line-height: 1.4;
+}
 
 /* Footer */
 .footer {
-  border-top: 1px solid var(--gc-border);
-  padding-top: 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 36px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 8px;
   color: var(--gc-secondary);
+  border-top: 1px solid var(--gc-border);
 }
-.footer-banner {
-  display: flex;
+.footer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 4px;
-  width: 80px;
-  border-radius: 2px;
-  overflow: hidden;
+  background: linear-gradient(90deg, var(--gc-blue) 25%, var(--gc-red) 25% 50%, var(--gc-yellow) 50% 75%, var(--gc-green) 75%);
 }
-.footer-banner div { flex: 1; }
-.footer-banner div:nth-child(1) { background: var(--gc-blue); }
-.footer-banner div:nth-child(2) { background: var(--gc-red); }
-.footer-banner div:nth-child(3) { background: var(--gc-yellow); }
-.footer-banner div:nth-child(4) { background: var(--gc-green); }
 </style>
 </head>
 <body>
+
 <div class="page">
 
   <!-- HEADER -->
   <div class="header">
-    <div>
-      <h1>SUNY ASAP|ACE + <strong>Google Cloud AI</strong><br>Student Success at Scale</h1>
-    </div>
-    <div class="meta">
-      <div class="gc-logo-print"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></div>
-      Prepared for Camille Joseph Varlack<br>June 2026
-    </div>
+    <div class="gc-logo"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:rgba(255,255,255,0.7)">Cloud</span></div>
+    <h1>Expanding the SUNY AI Platform to <span>Student Success</span></h1>
+    <div class="subtitle">Prepared for Camille Joseph Varlack, SUNY | June 2026 | Confidential</div>
   </div>
 
-  <!-- HEADLINE STATS -->
-  <div class="stat-bar">
-    <div class="stat-item">
-      <div class="number" style="color: var(--gc-blue);">2x</div>
-      <div class="label">graduation rates<br>(MDRC RCT)</div>
-    </div>
-    <div class="stat-item">
-      <div class="number" style="color: var(--gc-green);">7,050</div>
-      <div class="label">students across<br>34 SUNY campuses</div>
-    </div>
-    <div class="stat-item">
-      <div class="number" style="color: var(--gc-red);">$3.50</div>
-      <div class="label">return per $1<br>invested (Columbia)</div>
-    </div>
-    <div class="stat-item">
-      <div class="number" style="color: var(--gc-purple);">10,000</div>
-      <div class="label">student target<br>Fall 2026</div>
-    </div>
-  </div>
+  <div class="content">
 
-  <!-- THE PROGRAM + EVIDENCE -->
-  <div class="two-col">
-    <div>
-      <div class="section-title blue">The Program & Evidence</div>
-      <p style="font-size: 10px; line-height: 1.5; margin-bottom: 8px;">
-        SUNY ASAP|ACE is the nation's fastest-scaling, evidence-backed student success program. MDRC's gold-standard randomized controlled trials confirmed it <strong style="color: var(--gc-blue);">nearly doubles community college graduation rates</strong>. Backed by $12M in FY26 State Budget funding.
-      </p>
-      <table class="evidence-table">
-        <tr><th>Study</th><th>Method</th><th>Result</th></tr>
-        <tr><td>CUNY ASAP (896 students)</td><td>RCT</td><td class="highlight">40.1% vs. 21.8%</td></tr>
-        <tr><td>SUNY Westchester CC</td><td>RCT</td><td class="highlight">+11.8 pp (during COVID)</td></tr>
-        <tr><td>Ohio (3 colleges)</td><td>RCT</td><td class="highlight">+15 pp graduation</td></tr>
-        <tr><td>SUNY credit completion</td><td>Quasi-exp.</td><td class="highlight">73% vs. 61%</td></tr>
-        <tr><td>SUNY 1st-2nd term retention</td><td>Quasi-exp.</td><td class="highlight">+17 pp</td></tr>
-      </table>
-    </div>
-    <div>
-      <div class="section-title red">The Gap</div>
-      <p style="font-size: 10px; line-height: 1.5; margin-bottom: 8px;">
-        SUNY has rich data across 64 campuses — 3 SIS vendors, unified Brightspace LMS, SIRIS/SUNY BI warehouse with 45+ reports/campus/year. But:
-      </p>
-      <div class="gap-callout">
-        <p><strong>No system-wide predictive analytics platform.</strong> Advisors log into 4-5 separate systems with no unified student view. Students are flagged only after they've already disengaged. The data exists — the AI layer does not.</p>
+    <!-- FOUNDATION STATS -->
+    <div class="stat-strip">
+      <div class="stat-item">
+        <div class="num">230+</div>
+        <div class="label">Active Researchers<br>on Platform</div>
       </div>
+      <div class="stat-item green">
+        <div class="num">$2.84M</div>
+        <div class="label">Cloud Consumption<br>Phase 2</div>
+      </div>
+      <div class="stat-item purple">
+        <div class="num">10-15x</div>
+        <div class="label">AI Workload<br>Speedups</div>
+      </div>
+      <div class="stat-item red">
+        <div class="num">9</div>
+        <div class="label">Campuses<br>Onboarded</div>
+      </div>
+    </div>
 
-      <div class="section-title green">The Solution</div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px;">
-        <div class="use-case-card" style="border-top: 2px solid var(--gc-blue);">
-          <h4><span class="material-symbols-outlined" style="color: var(--gc-blue);">hub</span> Student 360</h4>
-          <p>BigQuery unified data lake — one screen per advisor</p>
+    <p class="intro">SUNY's AI Platform has proven transformational for research across 9 campuses. <strong>The opportunity now is to extend this foundation to SUNY's highest-priority institutional challenge: student retention and completion at scale.</strong> Governor Hochul's ASAP|ACE program is expanding from 4,270 to 10,000 students with $12M in state funding — but its analytics infrastructure is fragmented and campus-by-campus. Google Cloud will deliver the unified Student 360 AI layer that ASAP|ACE needs to target interventions precisely, at scale.</p>
+
+    <!-- THE OPPORTUNITY -->
+    <div class="section-header green">
+      <span class="material-symbols-outlined">trending_up</span>
+      <h2>The Opportunity: ASAP|ACE — Most Validated Student Success Program in U.S. History</h2>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <table class="evidence-table">
+          <tr><th style="text-align:left;">MDRC RCT Results</th><th>ASAP</th><th>Control</th><th>Effect</th></tr>
+          <tr><td>3-Year Graduation</td><td>40.1%</td><td>21.8%</td><td class="highlight">+18.3 pp</td></tr>
+          <tr><td>Ohio 8-Year Follow-up</td><td>46%</td><td>31%</td><td class="highlight">+15 pp</td></tr>
+          <tr><td>Earnings (Ohio, 8yr)</td><td colspan="2" style="color:var(--gc-secondary);">Annual increase</td><td class="highlight">+$3,337</td></tr>
+          <tr><td>Cost per Student</td><td colspan="2" style="color:var(--gc-secondary);">Incremental/year</td><td class="highlight">$3,440</td></tr>
+          <tr><td>ROI (Columbia)</td><td colspan="2" style="color:var(--gc-secondary);">Per $1 invested</td><td class="highlight">$3.50</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="compact-card green" style="margin-bottom: 6px;">
+          <h3><span class="material-symbols-outlined">school</span> Early SUNY Results</h3>
+          <ul>
+            <li><strong style="color:var(--gc-green);">17 pp</strong> first-to-second-term retention increase</li>
+            <li><strong style="color:var(--gc-green);">15 pp</strong> one-year retention increase</li>
+            <li><strong style="color:var(--gc-green);">20%</strong> higher credit completion (ASAP vs. comparison)</li>
+            <li><strong style="color:var(--gc-green);">500+</strong> student waitlist — demand outstripping capacity</li>
+          </ul>
         </div>
-        <div class="use-case-card" style="border-top: 2px solid var(--gc-green);">
-          <h4><span class="material-symbols-outlined" style="color: var(--gc-green);">psychology</span> Risk Prediction</h4>
-          <p>Vertex AI catches at-risk students 2-4 weeks earlier</p>
-        </div>
-        <div class="use-case-card" style="border-top: 2px solid var(--gc-purple);">
-          <h4><span class="material-symbols-outlined" style="color: var(--gc-purple);">smart_toy</span> AI Copilot</h4>
-          <p>Gemini chatbot frees 30-40% of advisor time</p>
-        </div>
-        <div class="use-case-card" style="border-top: 2px solid var(--gc-red);">
-          <h4><span class="material-symbols-outlined" style="color: var(--gc-red);">monitoring</span> Dashboards</h4>
-          <p>Real-time Looker retention & equity metrics</p>
+        <div style="font-size:8px;color:var(--gc-secondary);padding:4px 0;line-height:1.5;">
+          <strong style="color:var(--gc-text);">Scaling:</strong> 4,270 (Fall '24) → 7,050 (Fall '25) → <strong style="color:var(--gc-purple);">10,000 target (Fall '26)</strong> across 34+ campuses. $12M FY26 State Budget. 120K+ students served by CUNY model across 60+ institutions in 9 states.
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- ROI BAR -->
-  <div class="roi-bar">
-    <div class="roi-item">
-      <div class="roi-number">$3.50</div>
-      <div class="roi-label">return per $1 invested</div>
+    <!-- THE GAP -->
+    <div class="section-header red">
+      <span class="material-symbols-outlined">warning</span>
+      <h2>The Gap: Fragmented Data & Why Prediction Alone Fails</h2>
     </div>
-    <div class="divider"></div>
-    <div class="roi-item">
-      <div class="roi-number">$43K</div>
-      <div class="roi-label">net social benefit / student</div>
-    </div>
-    <div class="divider"></div>
-    <div class="roi-item">
-      <div class="roi-number">$125K+</div>
-      <div class="roi-label">incl. intergenerational effects</div>
-    </div>
-    <div class="divider"></div>
-    <div class="roi-item">
-      <div class="roi-number">$105K</div>
-      <div class="roi-label">cost/degree (vs. $118K control)</div>
-    </div>
-  </div>
 
-  <!-- INVESTMENT PHASES -->
-  <div style="margin-bottom: 6px;"><span class="section-title dark-blue">Investment: $4.5-6.5M over 24 Months</span></div>
-  <div class="three-col">
-    <div class="phase-card" style="border-top: 3px solid var(--gc-blue);">
-      <div class="phase-header" style="color: var(--gc-blue);">Phase 1 — Months 1-6</div>
-      <div class="phase-cost">$1.5-2M</div>
-      <ul>
-        <li>BigQuery student data lake</li>
-        <li>Student 360 advisor view</li>
-        <li>Executive retention dashboard</li>
-      </ul>
+    <div class="two-col">
+      <div style="font-size:9px;color:var(--gc-secondary);line-height:1.65;">
+        <strong style="color:var(--gc-text);">SUNY Broome case study:</strong> 25% headcount decline, 47.9% retention rate, 250 students per advisor, 45% with DFW grades. No unified Student 360 view across 64 campuses — data siloed in SIS, LMS, financial aid, and advising systems with campus-by-campus vendor procurement.
+        <br><br>
+        <strong style="color:var(--gc-red);">Critical insight:</strong> A DOE-funded RCT at 11 universities found predictive analytics alone produced <strong style="color:var(--gc-text);">no significant improvements</strong> — except at Georgia State, which had pre-existing data infrastructure. <strong style="color:var(--gc-text);">ASAP|ACE has the intervention infrastructure. It lacks the data/AI layer. Google Cloud fills this gap.</strong>
+      </div>
+      <div>
+        <div style="font-size:8.5px;font-weight:700;color:var(--gc-text);margin-bottom:6px;">Google Cloud vs. Typical Vendor</div>
+        <table class="evidence-table" style="margin-top:0;">
+          <tr><th style="background:var(--gc-red);">Vendor Approach</th><th style="background:var(--gc-green);">Google Cloud</th></tr>
+          <tr><td>Prediction as product</td><td style="font-weight:600;color:var(--gc-green);">Powering ASAP|ACE interventions</td></tr>
+          <tr><td>Campus-by-campus SaaS</td><td style="font-weight:600;color:var(--gc-green);">System-wide across 64 campuses</td></tr>
+          <tr><td>Revenue/ROI framing</td><td style="font-weight:600;color:var(--gc-green);">Student outcomes + equity</td></tr>
+          <tr><td>Black-box models</td><td style="font-weight:600;color:var(--gc-green);">Explainable AI (Vertex AI)</td></tr>
+          <tr><td>Vendor-locked data</td><td style="font-weight:600;color:var(--gc-green);">Open lakehouse — SUNY owns it</td></tr>
+        </table>
+      </div>
     </div>
-    <div class="phase-card" style="border-top: 3px solid var(--gc-green);">
-      <div class="phase-header" style="color: var(--gc-green);">Phase 2 — Months 6-12</div>
-      <div class="phase-cost" style="color: var(--gc-green);">$1-1.5M</div>
-      <ul>
-        <li>Vertex AI predictive risk models</li>
-        <li>Gemini AI advising chatbot</li>
-        <li>Financial aid optimization</li>
-      </ul>
-    </div>
-    <div class="phase-card" style="border-top: 3px solid var(--gc-purple);">
-      <div class="phase-header" style="color: var(--gc-purple);">Phase 3 — Months 12-24</div>
-      <div class="phase-cost" style="color: var(--gc-purple);">$2-3M</div>
-      <ul>
-        <li>Scale to all 64 SUNY campuses</li>
-        <li>Course & transfer intelligence</li>
-        <li>Workforce outcome tracking</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- COMPARABLES -->
-  <div style="background: var(--gc-surface); border-radius: 6px; padding: 8px 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px;">
-    <span class="material-symbols-outlined" style="color: var(--gc-blue); font-size: 18px;">verified</span>
-    <p style="font-size: 9px; color: var(--gc-secondary); line-height: 1.5;">
-      <strong style="color: var(--gc-text);">Proven at peer institutions:</strong>
-      Arizona State + Google Cloud: +16pp retention &nbsp;|&nbsp;
-      Georgia State: eliminated equity gaps &nbsp;|&nbsp;
-      Ivy Tech + Google Cloud: predictive analytics for 200K+ students
-    </p>
+    <!-- THE SOLUTION -->
+    <div class="section-header purple">
+      <span class="material-symbols-outlined">psychology</span>
+      <h2>The Solution: Student 360 AI Platform — Built on Existing Infrastructure</h2>
+    </div>
+
+    <!-- Architecture flow -->
+    <div style="text-align: center;">
+      <div class="flow-row">
+        <div class="flow-box blue"><span class="material-symbols-outlined">database</span>SIS</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box red"><span class="material-symbols-outlined">school</span>LMS</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box yellow"><span class="material-symbols-outlined">payments</span>Fin. Aid</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box dark-blue" style="min-width:160px;"><span class="material-symbols-outlined">cloud</span>BigQuery Lakehouse<br><span style="font-size:7px;opacity:0.8;">Student 360 across 64 campuses</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box purple"><span class="material-symbols-outlined">model_training</span>Vertex AI<br><span style="font-size:7px;opacity:0.8;">Risk Models</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box green"><span class="material-symbols-outlined">smart_toy</span>Gemini<br><span style="font-size:7px;opacity:0.8;">Copilot + Chatbot</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box teal"><span class="material-symbols-outlined">monitoring</span>Looker<br><span style="font-size:7px;opacity:0.8;">Dashboards</span></div>
+      </div>
+    </div>
+
+    <!-- Use cases -->
+    <div class="two-col" style="margin-top: 6px;">
+      <div>
+        <div class="compact-card" style="margin-bottom: 6px;">
+          <h3><span class="material-symbols-outlined">notifications</span> Predictive Retention & Early Alert</h3>
+          <p>Daily risk scores combining LMS engagement, academic momentum, financial indicators, and behavioral signals. Gemini-generated intervention recommendations. <strong style="color:var(--gc-blue);">Target: 50% triage time reduction, 48hr proactive outreach.</strong></p>
+        </div>
+        <div class="compact-card purple" style="margin-bottom: 6px;">
+          <h3><span class="material-symbols-outlined">smart_toy</span> AI Advising Copilot (Gemini)</h3>
+          <p>Pre-briefs advisors before meetings, drafts personalized outreach, auto-generates session notes, surfaces degree pathways. Built on existing Gemini Enterprise. <strong style="color:var(--gc-purple);">Target: 30% advisor capacity increase.</strong></p>
+        </div>
+      </div>
+      <div>
+        <div class="compact-card green" style="margin-bottom: 6px;">
+          <h3><span class="material-symbols-outlined">monitoring</span> Student 360 Dashboard</h3>
+          <p>Role-based Looker views: advisor (individual risk profiles), campus leader (retention funnels, DFW rates), system admin (cross-campus benchmarks, state reporting).</p>
+        </div>
+        <div class="compact-card teal">
+          <h3><span class="material-symbols-outlined">how_to_reg</span> Auto Eligibility + GrantAI Extension</h3>
+          <p>Automated ASAP|ACE eligibility matching and waitlist management via AI Portal. GrantAI extended to student success research funding (NSF, DOE, Spencer). <strong style="color:var(--gc-teal);">Target: 70% onboarding reduction.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI + ROADMAP -->
+    <div class="section-header teal">
+      <span class="material-symbols-outlined">savings</span>
+      <h2>ROI & Implementation Roadmap</h2>
+    </div>
+
+    <div class="roi-grid">
+      <div class="roi-box invest">
+        <h4>Investment (Year 1)</h4>
+        <div class="roi-line"><span>BigQuery platform (64 campuses)</span><span class="val">$200-400K</span></div>
+        <div class="roi-line"><span>Vertex AI models</span><span class="val">$150-250K</span></div>
+        <div class="roi-line"><span>Gemini Enterprise</span><span class="val">$100-200K</span></div>
+        <div class="roi-line"><span>Looker + Prof. Services</span><span class="val">$375-650K</span></div>
+        <div class="roi-line roi-total red"><span>Total</span><span class="val" style="color:var(--gc-red);">$825K-$1.5M</span></div>
+      </div>
+      <div class="roi-vs">→</div>
+      <div class="roi-box return">
+        <h4>Return (200 retained students = 2%)</h4>
+        <div class="roi-line"><span>Tuition recovery</span><span class="val">$1.4-2.4M</span></div>
+        <div class="roi-line"><span>State funding retained</span><span class="val">$2.0-3.0M</span></div>
+        <div class="roi-line"><span>Social benefits (lifetime)</span><span class="val">$8.6M</span></div>
+        <div class="roi-line roi-total"><span>Annual Recovery</span><span class="val">$3.4-5.4M</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:6px;">
+      <div class="payback-badge">Payback: Under 1 Year</div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-row">
+      <div class="timeline-item">
+        <div class="phase">3A</div>
+        <div class="months">Months 1-4</div>
+        <div class="desc">Data architecture, 3-5 pilot campuses, FERPA governance, BigQuery risk models</div>
+      </div>
+      <div class="timeline-item b">
+        <div class="phase">3B</div>
+        <div class="months">Months 4-8</div>
+        <div class="desc">Vertex AI retention models, early alert system, Gemini copilot pilot (20 advisors)</div>
+      </div>
+      <div class="timeline-item c">
+        <div class="phase">3C</div>
+        <div class="months">Months 8-12</div>
+        <div class="desc">Scale to 34 campuses, student chatbot, GrantAI extension, cross-campus benchmarks</div>
+      </div>
+      <div class="timeline-item d">
+        <div class="phase">3D</div>
+        <div class="months">Months 12-18</div>
+        <div class="desc">Model refinement, fairness audits, state reporting integration, M&O transition</div>
+      </div>
+    </div>
+
   </div>
 
   <!-- FOOTER -->
   <div class="footer">
-    <div>
-      <span style="font-weight: 600;">Sources:</span> MDRC RCTs, SUNY Press Releases (Oct 2024/2025), Columbia University ROI Study, Governor Hochul Announcement
-    </div>
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <div class="footer-banner"><div></div><div></div><div></div><div></div></div>
-      <span class="gc-logo-print" style="font-size: 10px;"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:#5F6368">Cloud</span></span>
-    </div>
+    <div><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC04">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span> <span style="color:var(--gc-secondary)">Cloud</span> — Confidential</div>
+    <div>SUNY Student Success AI Platform | June 2026</div>
   </div>
 
 </div>
+
 </body>
 </html>
