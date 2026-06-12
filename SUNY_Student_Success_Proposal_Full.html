@@ -634,7 +634,7 @@ body {
       <h2>Executive <span>Summary</span></h2>
     </div>
 
-    <p>SUNY's AI Platform has already proven transformational for research — 230+ researchers across 9 campuses, 15 GCP services, 10-15x AI workload speedups, and tier-1 publications at AAAI and NeurIPS. The opportunity now is to apply the same proven cloud foundation to SUNY's highest-priority institutional challenge: <strong>student retention and completion at scale</strong>.</p>
+    <p>Built on <strong>Gemini Enterprise</strong> — Google's most capable AI, already deployed securely across SUNY — the Student 360 AI Platform extends SUNY's proven research foundation to its highest-priority institutional challenge: <strong>student retention and completion at scale</strong>. With 230+ researchers across 9 campuses, 15 GCP services, 10-15x AI workload speedups, and tier-1 publications at AAAI and NeurIPS, the platform infrastructure is already in place. The opportunity now is to turn that same foundation toward student success.</p>
 
     <div class="stat-strip">
       <div class="stat-card">
@@ -684,11 +684,10 @@ body {
     <p>ASAP (Accelerated Study in Associate Programs) launched at CUNY in 2007 as a comprehensive support model for community college students. Its results are extraordinary and rigorously validated:</p>
 
     <table class="gc-table">
-      <tr><th style="text-align:left;">Metric</th><th>ASAP Students</th><th>Comparison Group</th><th>Effect</th></tr>
-      <tr><td>Three-year graduation rate (MDRC RCT)</td><td>40.1%</td><td>21.8%</td><td class="hl">+18.3 pp</td></tr>
-      <tr><td>Historical three-year graduation rate</td><td>53%</td><td>25%</td><td class="hl">+28 pp</td></tr>
-      <tr><td>Ohio replication (8-year follow-up)</td><td>46%</td><td>31%</td><td class="hl">+15 pp</td></tr>
-      <tr><td>Annual earnings gain (Ohio, 8 years)</td><td colspan="2" style="color:var(--gc-secondary)">8-year longitudinal follow-up</td><td class="hl">+$3,337</td></tr>
+      <tr><th style="text-align:left;">Program / Benchmark</th><th>Graduation / Retention Metric</th><th>Comparison</th><th>Effect</th></tr>
+      <tr><td>ASAP Nationwide (MDRC RCT)</td><td>40.1% three-year graduation</td><td>21.8% control group</td><td class="hl">+18.3 pp</td></tr>
+      <tr><td>SUNY Early Results</td><td>17 pp first-to-second-term retention increase</td><td colspan="1" style="color:var(--gc-secondary)">—</td><td class="hl">20% higher credit completion</td></tr>
+      <tr><td>Non-ASAP Community Colleges</td><td>~22% national average three-year graduation rate</td><td colspan="2" style="color:var(--gc-secondary)">National baseline</td></tr>
     </table>
 
     <div class="callout green">
@@ -733,21 +732,16 @@ body {
       </div>
     </div>
 
-    <div class="stat-strip" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="stat-strip" style="grid-template-columns: repeat(2, 1fr);">
       <div class="stat-card green">
-        <div class="stat-num">$3,440</div>
-        <div class="stat-label">Per Student/Year</div>
-        <div class="stat-desc">Incremental cost</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">$3.50</div>
-        <div class="stat-label">Per $1 Invested</div>
-        <div class="stat-desc">Columbia cost-benefit analysis</div>
+        <div class="stat-num">120K+</div>
+        <div class="stat-label">Students Served</div>
+        <div class="stat-desc">Across 18 CUNY cohorts</div>
       </div>
       <div class="stat-card purple">
-        <div class="stat-num">$43K</div>
-        <div class="stat-label">Net Social Benefit</div>
-        <div class="stat-desc">Per participant (lifetime)</div>
+        <div class="stat-num">60+</div>
+        <div class="stat-label">Institutions</div>
+        <div class="stat-desc">Replicated in nine states</div>
       </div>
     </div>
 
@@ -886,30 +880,18 @@ body {
 
     <p>Google Cloud isn't entering as another predictive analytics vendor. The positioning is fundamentally different:</p>
 
-    <div class="vs-grid">
-      <div class="vs-card bad">
-        <h3><span class="material-symbols-outlined" style="font-size:20px;vertical-align:-3px;">close</span> Typical Vendor Approach</h3>
-        <ul>
-          <li>Prediction as the product</li>
-          <li>Campus-by-campus SaaS licenses</li>
-          <li>Revenue/ROI framing</li>
-          <li>Black-box proprietary models</li>
-          <li>Siloed, vendor-owned data</li>
-          <li>Race/gender/age as predictors</li>
-        </ul>
-      </div>
-      <div class="vs-card good">
-        <h3><span class="material-symbols-outlined" style="font-size:20px;vertical-align:-3px;">check_circle</span> Google Cloud Approach</h3>
-        <ul>
-          <li>Prediction powering ASAP|ACE's proven interventions</li>
-          <li>System-wide data platform across 64 campuses</li>
-          <li>Student outcomes and equity framing</li>
-          <li>Explainable AI with Vertex AI and BigQuery ML</li>
-          <li>Open, interoperable data lakehouse</li>
-          <li>Fairness constraints built into model training</li>
-        </ul>
-      </div>
-    </div>
+    <table class="gc-table" style="margin: 16px 0;">
+      <tr><th style="text-align:left;">Dimension</th><th>Typical Vendor</th><th>Google Cloud</th></tr>
+      <tr><td><strong>Approach</strong></td><td style="text-align:left;">Prediction-as-product</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">Powering ASAP|ACE's proven interventions</td></tr>
+      <tr><td><strong>Deployment</strong></td><td style="text-align:left;">Campus-by-campus SaaS</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">System-wide platform (64 campuses)</td></tr>
+      <tr><td><strong>Data Ownership</strong></td><td style="text-align:left;">Vendor-locked data</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">Open lakehouse — SUNY owns all data</td></tr>
+      <tr><td><strong>AI Transparency</strong></td><td style="text-align:left;">Black-box proprietary models</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">Explainable AI (Vertex AI)</td></tr>
+      <tr><td><strong>Procurement</strong></td><td style="text-align:left;">Per-campus licensing fees</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">Single enterprise agreement</td></tr>
+      <tr><td><strong>Customization</strong></td><td style="text-align:left;">Vendor-configured</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">SUNY-built, SUNY-owned models</td></tr>
+      <tr><td><strong>Scale Economics</strong></td><td style="text-align:left;">Linear cost per campus</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">Economies of scale across system</td></tr>
+      <tr><td><strong>Equity & Bias</strong></td><td style="text-align:left;">Race/gender as predictors (bias risk)</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">Vertex AI Fairness tools</td></tr>
+      <tr><td><strong>Integration</strong></td><td style="text-align:left;">Siloed vendor portal</td><td style="text-align:left;color:var(--gc-green);font-weight:600;">Unified with existing GCP platform (Phase 1)</td></tr>
+    </table>
   </div>
 
   <!-- Architecture -->
@@ -922,36 +904,34 @@ body {
     <p>Building on the existing SUNY AI Platform foundation (GCP org, IAM, networking already in place from Phase 1):</p>
 
     <div class="flow-container">
+      <!-- TOP: Gemini Enterprise — most visually dominant -->
       <div class="flow-row">
-        <div class="flow-box blue"><span class="material-symbols-outlined">database</span>SIS<br><span style="font-size:10px;opacity:0.8;">(Banner/Ellucian)</span></div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box red"><span class="material-symbols-outlined">school</span>LMS<br><span style="font-size:10px;opacity:0.8;">(Canvas/Brightspace)</span></div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box yellow"><span class="material-symbols-outlined">payments</span>Financial Aid<br><span style="font-size:10px;opacity:0.8;">(FAFSA)</span></div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box green"><span class="material-symbols-outlined">support_agent</span>Advising<br><span style="font-size:10px;opacity:0.8;">Systems</span></div>
+        <div class="flow-box dark-blue wide" style="padding:20px 28px;font-size:14px;min-width:340px;"><span class="material-symbols-outlined" style="font-size:28px;">smart_toy</span>Gemini Enterprise<br><span style="font-size:11px;opacity:0.8;">Advising Copilot &bull; Student Chatbot &bull; Early Alert Triage</span></div>
       </div>
       <div class="flow-arrow-down"></div>
+      <!-- Looker Dashboards + Vertex AI Risk Models -->
       <div class="flow-row">
-        <div class="flow-box dark-blue wide"><span class="material-symbols-outlined">cloud</span>BigQuery — Unified Data Lakehouse<br><span style="font-size:10px;opacity:0.8;">Student 360 View across 64 campuses</span></div>
-      </div>
-      <div class="flow-arrow-down"></div>
-      <div class="flow-row">
-        <div class="flow-box purple"><span class="material-symbols-outlined">model_training</span>Retention<br>Risk Model</div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box teal"><span class="material-symbols-outlined">trending_up</span>Credit<br>Momentum</div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box coral"><span class="material-symbols-outlined">warning</span>Financial<br>Distress</div>
-      </div>
-      <div class="flow-arrow-down"></div>
-      <div class="flow-row">
-        <div class="flow-box blue"><span class="material-symbols-outlined">smart_toy</span>Advising<br>Copilot</div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box green"><span class="material-symbols-outlined">notifications</span>Early Alert<br>Triage</div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box red"><span class="material-symbols-outlined">chat</span>Student<br>Chatbot</div>
-        <div class="flow-arrow"></div>
         <div class="flow-box teal"><span class="material-symbols-outlined">monitoring</span>Looker<br>Dashboards</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box purple"><span class="material-symbols-outlined">model_training</span>Vertex AI<br>Risk Models</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box coral"><span class="material-symbols-outlined">trending_up</span>Credit<br>Momentum</div>
+      </div>
+      <div class="flow-arrow-down"></div>
+      <!-- BigQuery Unified Data Lakehouse -->
+      <div class="flow-row">
+        <div class="flow-box blue wide"><span class="material-symbols-outlined">cloud</span>BigQuery — Unified Data Lakehouse<br><span style="font-size:10px;opacity:0.8;">Student 360 across 64 campuses</span></div>
+      </div>
+      <div class="flow-arrow-down"></div>
+      <!-- BOTTOM: Data sources feeding UP -->
+      <div class="flow-row">
+        <div class="flow-box" style="background:#5F6368;"><span class="material-symbols-outlined">database</span>SIS<br><span style="font-size:10px;opacity:0.8;">(Banner/Ellucian)</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box" style="background:#5F6368;"><span class="material-symbols-outlined">school</span>LMS<br><span style="font-size:10px;opacity:0.8;">(Canvas/Brightspace)</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box" style="background:#5F6368;"><span class="material-symbols-outlined">payments</span>Financial Aid<br><span style="font-size:10px;opacity:0.8;">(FAFSA)</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box" style="background:#5F6368;"><span class="material-symbols-outlined">support_agent</span>Advising<br><span style="font-size:10px;opacity:0.8;">Systems</span></div>
       </div>
     </div>
   </div>
@@ -1141,7 +1121,7 @@ body {
         <h4>Per-Student Return When Retained</h4>
         <div class="roi-line"><span>Annual tuition recovery</span><span class="val">$7,000–12,000</span></div>
         <div class="roi-line"><span>State funding per FTE</span><span class="val">$10,000–15,000</span></div>
-        <div class="roi-line"><span>Lifetime social benefits (per ASAP graduate)</span><span class="val">$43,000</span></div>
+        <div class="roi-line"><span>Lifetime social benefits (per ASAP graduate)</span><span class="val">Significant</span></div>
       </div>
       <div class="roi-arrow">→</div>
       <div class="roi-box return" style="flex:1;">
@@ -1336,7 +1316,7 @@ body {
       </div>
       <div class="source-item">
         <div class="source-num">9</div>
-        <div><div class="source-title">Columbia Center on Poverty and Social Policy (Dec 2024)</div><div class="source-detail">$43K net social benefits per ASAP participant</div></div>
+        <div><div class="source-title">National Student Clearinghouse Research Center</div><div class="source-detail">National community college completion rates and benchmarks</div><a href="https://nscresearchcenter.org/">nscresearchcenter.org</a></div>
       </div>
     </div>
   </div>

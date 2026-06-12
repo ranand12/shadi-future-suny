@@ -447,7 +447,7 @@ body {
       </div>
     </div>
 
-    <p class="intro">SUNY's AI Platform has proven transformational for research across 9 campuses — delivering <strong>10-15x AI workload speedups</strong>, supporting tier-1 publications at <strong>AAAI and NeurIPS</strong>, and strengthening grant proposals to NSF, NIH, and the Spencer Foundation. <strong>The opportunity now is to extend this proven foundation to SUNY's highest-priority institutional challenge: student retention and completion at scale.</strong> Governor Hochul's ASAP|ACE program is expanding from 4,270 to 10,000 students with $12M in state funding — but its analytics infrastructure is fragmented and campus-by-campus. Google Cloud will deliver the unified Student 360 AI layer that ASAP|ACE needs to target interventions precisely, at scale.</p>
+    <p class="intro">Built on <strong>Gemini Enterprise</strong> — already deployed securely across SUNY — the Student 360 AI Platform extends a proven research foundation (<strong>10-15x AI workload speedups</strong>, tier-1 publications at <strong>AAAI and NeurIPS</strong>) to SUNY's highest-priority challenge: <strong>student retention and completion at scale.</strong> Governor Hochul's ASAP|ACE program is expanding from 4,270 to 10,000 students with $12M in state funding — but its analytics infrastructure is fragmented and campus-by-campus. Google Cloud will deliver the unified Student 360 AI layer that ASAP|ACE needs to target interventions precisely, at scale.</p>
 
     <!-- THE OPPORTUNITY -->
     <div class="section-header green">
@@ -458,12 +458,10 @@ body {
     <div class="two-col">
       <div>
         <table class="evidence-table">
-          <tr><th style="text-align:left;">MDRC RCT Results</th><th>ASAP</th><th>Control</th><th>Effect</th></tr>
-          <tr><td>3-Year Graduation</td><td>40.1%</td><td>21.8%</td><td class="highlight">+18.3 pp</td></tr>
-          <tr><td>Ohio 8-Year Follow-up</td><td>46%</td><td>31%</td><td class="highlight">+15 pp</td></tr>
-          <tr><td>Earnings (Ohio, 8yr)</td><td colspan="2" style="color:var(--gc-secondary);">Annual increase</td><td class="highlight">+$3,337</td></tr>
-          <tr><td>Cost per Student</td><td colspan="2" style="color:var(--gc-secondary);">Incremental/year</td><td class="highlight">$3,440</td></tr>
-          <tr><td>ROI (Columbia)</td><td colspan="2" style="color:var(--gc-secondary);">Per $1 invested</td><td class="highlight">$3.50</td></tr>
+          <tr><th style="text-align:left;">Program</th><th>Graduation / Retention</th><th>Comparison</th><th>Effect</th></tr>
+          <tr><td>ASAP Nationwide (MDRC RCT)</td><td>40.1% three-year grad</td><td>21.8% control</td><td class="highlight">+18.3 pp</td></tr>
+          <tr><td>SUNY Early Results</td><td>17 pp retention increase</td><td colspan="2" class="highlight">20% higher credit completion</td></tr>
+          <tr><td>Non-ASAP Community Colleges</td><td colspan="2" style="color:var(--gc-secondary);">National average</td><td class="highlight">~22% grad rate</td></tr>
         </table>
       </div>
       <div>
@@ -499,10 +497,14 @@ body {
         <table class="evidence-table" style="margin-top:0;">
           <tr><th style="background:var(--gc-red);">Vendor Approach</th><th style="background:var(--gc-green);">Google Cloud</th></tr>
           <tr><td>Prediction as product</td><td style="font-weight:600;color:var(--gc-green);">Powering ASAP|ACE interventions</td></tr>
-          <tr><td>Campus-by-campus SaaS</td><td style="font-weight:600;color:var(--gc-green);">System-wide across 64 campuses</td></tr>
-          <tr><td>Revenue/ROI framing</td><td style="font-weight:600;color:var(--gc-green);">Student outcomes + equity</td></tr>
+          <tr><td>Campus-by-campus SaaS</td><td style="font-weight:600;color:var(--gc-green);">System-wide (64 campuses)</td></tr>
+          <tr><td>Vendor-locked data</td><td style="font-weight:600;color:var(--gc-green);">Open lakehouse, SUNY owns data</td></tr>
           <tr><td>Black-box models</td><td style="font-weight:600;color:var(--gc-green);">Explainable AI (Vertex AI)</td></tr>
-          <tr><td>Vendor-locked data</td><td style="font-weight:600;color:var(--gc-green);">Open lakehouse — SUNY owns it</td></tr>
+          <tr><td>Per-campus licensing</td><td style="font-weight:600;color:var(--gc-green);">Single enterprise agreement</td></tr>
+          <tr><td>Vendor-configured</td><td style="font-weight:600;color:var(--gc-green);">SUNY-built, SUNY-owned</td></tr>
+          <tr><td>Linear cost scaling</td><td style="font-weight:600;color:var(--gc-green);">Economies of scale</td></tr>
+          <tr><td>Race/gender predictors</td><td style="font-weight:600;color:var(--gc-green);">Vertex AI Fairness tools</td></tr>
+          <tr><td>Siloed portal</td><td style="font-weight:600;color:var(--gc-green);">Unified with existing GCP</td></tr>
         </table>
       </div>
     </div>
@@ -516,19 +518,19 @@ body {
     <!-- Architecture flow -->
     <div style="text-align: center;">
       <div class="flow-row">
+        <div class="flow-box dark-blue" style="min-width:160px;padding:10px 16px;font-size:9px;"><span class="material-symbols-outlined" style="font-size:20px;">smart_toy</span>Gemini Enterprise<br><span style="font-size:7px;opacity:0.8;">Copilot + Chatbot + AI Layer</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box teal"><span class="material-symbols-outlined">monitoring</span>Looker<br><span style="font-size:7px;opacity:0.8;">Dashboards</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box purple"><span class="material-symbols-outlined">model_training</span>Vertex AI<br><span style="font-size:7px;opacity:0.8;">Risk Models</span></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-box green" style="min-width:140px;"><span class="material-symbols-outlined">cloud</span>BigQuery Lakehouse<br><span style="font-size:7px;opacity:0.8;">Student 360 — 64 campuses</span></div>
+        <div class="flow-arrow"></div>
         <div class="flow-box blue"><span class="material-symbols-outlined">database</span>SIS</div>
         <div class="flow-arrow"></div>
         <div class="flow-box red"><span class="material-symbols-outlined">school</span>LMS</div>
         <div class="flow-arrow"></div>
         <div class="flow-box yellow"><span class="material-symbols-outlined">payments</span>Fin. Aid</div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box dark-blue" style="min-width:160px;"><span class="material-symbols-outlined">cloud</span>BigQuery Lakehouse<br><span style="font-size:7px;opacity:0.8;">Student 360 across 64 campuses</span></div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box purple"><span class="material-symbols-outlined">model_training</span>Vertex AI<br><span style="font-size:7px;opacity:0.8;">Risk Models</span></div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box green"><span class="material-symbols-outlined">smart_toy</span>Gemini<br><span style="font-size:7px;opacity:0.8;">Copilot + Chatbot</span></div>
-        <div class="flow-arrow"></div>
-        <div class="flow-box teal"><span class="material-symbols-outlined">monitoring</span>Looker<br><span style="font-size:7px;opacity:0.8;">Dashboards</span></div>
       </div>
     </div>
 
