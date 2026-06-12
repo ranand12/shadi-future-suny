@@ -4,11 +4,11 @@
 Executive Summary
 
 Project Goal Recap:
-The primary goal of Phase 2 was to expand the proven cloud architecture from three to nine research campuses and operationalize the ecosystem by launching the unified "SUNY AI Portal." 
+The primary goal of Phase 1 was to expand the proven cloud architecture from three to nine research campuses and operationalize the ecosystem by launching the unified "SUNY AI Portal." 
 In addition, we wanted to focus on scaling adoption, integrating advanced generative AI tools (GrantAI and Gemini Enterprise), and establishing mature governance and enablement frameworks.
 
 Overall Outcome:
-The Phase 2 project successfully expanded the foundation to all nine targeted campuses and delivered the AI Portal setting the stage for a production go-live and M&O transition. 
+The Phase 1 project successfully expanded the foundation to all nine targeted campuses and delivered the AI Portal setting the stage for a production go-live and M&O transition. 
 The platform has achieved massive scale and deployed advanced GenAI capabilities: It is now actively supporting over 230 active researchers utilizing 15 different GCP services, driving approximately $2.84M in cloud consumption
 
 Key Accomplishments:

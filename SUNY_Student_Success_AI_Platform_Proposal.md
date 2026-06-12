@@ -132,7 +132,7 @@ Google Cloud isn't entering as another predictive analytics vendor. The position
 
 ### Architecture: The Student 360 Data Platform
 
-Building on the existing SUNY AI Platform foundation (GCP org, IAM, networking already in place from Phase 2), the Student Success layer would integrate:
+Building on the existing SUNY AI Platform foundation (GCP org, IAM, networking already in place from Phase 1), the Student Success layer would integrate:
 
 ```
                     SUNY Student 360 AI Platform
@@ -203,7 +203,7 @@ Building on the existing SUNY AI Platform foundation (GCP org, IAM, networking a
 - **Automates documentation** by generating advising session notes from structured inputs
 - **Surfaces degree pathway options** based on completed coursework, remaining requirements, and course availability
 
-**Key differentiator:** Augments advisors rather than replacing them — aligned with ASAP's relationship-centered model. Built on SUNY's secure Gemini Enterprise instance already deployed in Phase 2.
+**Key differentiator:** Augments advisors rather than replacing them — aligned with ASAP's relationship-centered model. Built on SUNY's secure Gemini Enterprise instance already deployed in Phase 1.
 
 **Measurable target:** Enable each advisor to maintain quality interactions while increasing caseload capacity by 30%, directly supporting the 10,000-student scaling goal.
 
@@ -239,7 +239,7 @@ Building on the existing SUNY AI Platform foundation (GCP org, IAM, networking a
 
 **Problem:** With a 500+ student waitlist, the ASAP|ACE program needs to efficiently identify eligible students and onboard them — currently a manual, spreadsheet-driven process at many campuses.
 
-**Solution:** Automated eligibility matching against program criteria using BigQuery, with the SUNY AI Portal (already built in Phase 2) extended to include:
+**Solution:** Automated eligibility matching against program criteria using BigQuery, with the SUNY AI Portal (already built in Phase 1) extended to include:
 - Self-service ASAP|ACE eligibility checking
 - Automated document collection and verification
 - Waitlist management with priority scoring based on need indicators
@@ -366,25 +366,25 @@ This prototype is designed as a leave-behind — a working system SUNY can asses
 
 ## Part 7: Implementation Roadmap
 
-### Phase 3A: Foundation (Months 1-4)
+### Phase 2A: Foundation (Months 1-4)
 - Data architecture design for Student 360 lakehouse
 - SIS/LMS/Financial Aid data integration at 3-5 pilot campuses
 - BigQuery data models for student risk scoring
 - Governance framework for student data (FERPA compliance)
 
-### Phase 3B: Intelligence Layer (Months 4-8)
+### Phase 2B: Intelligence Layer (Months 4-8)
 - Vertex AI retention risk models trained on SUNY historical data
 - Early alert triage system with advisor-facing dashboards
 - Gemini advising copilot pilot with 20 ASAP|ACE advisors
 - Looker dashboards for campus leaders
 
-### Phase 3C: Scale (Months 8-12)
+### Phase 2C: Scale (Months 8-12)
 - Expand to all 34 ASAP|ACE campuses
 - Student-facing self-service features (chatbot, eligibility checker)
 - GrantAI extension for student success research funding
 - Cross-campus benchmarking and system-level reporting
 
-### Phase 3D: Optimize (Months 12-18)
+### Phase 2D: Optimize (Months 12-18)
 - Model refinement based on outcome data
 - Fairness audits and bias monitoring
 - Integration with state reporting requirements
