@@ -251,16 +251,41 @@ Building on the existing SUNY AI Platform foundation (GCP org, IAM, networking a
 
 ## Part 4: Why Google Cloud — The Competitive Advantage
 
-### 1. We're Already Here
+### 1. We're Already Here — And Already Delivering Results
 
 The existing SUNY AI Platform is already operational — infrastructure, governance, and trust are in place. The Student Success platform builds on:
 - **Existing GCP organization** with IAM, networking, and security controls
 - **Existing Gemini Enterprise** deployment (secure, compliant instance)
-- **Existing GrantAI** with PURE API integration
+- **Existing GrantAI** with PURE API integration and Grants.gov matching
 - **Existing AI Portal** with automated provisioning and TeamDynamix integration
-- **Existing relationships** with 9 campuses and 230+ users
+- **Existing relationships** with 9 campuses and 230+ active researchers
 
 No competitor can match this installed base.
+
+#### Phase 1 Research Impact — By the Numbers
+
+| Metric | Result |
+|--------|--------|
+| Experiment time reduction | **70%** vs. sequential local execution |
+| Training throughput speedup | **3.5x** for complex 3D models (cycles reduced to 4 days) |
+| Training loss reduction | **95.4%** on large-scale 32B parameter models |
+| AI workload acceleration | **10-15x** speedups across research teams |
+| Training cycle compression | **20 days → 2-3 days** for model training |
+| Model scale unlocked | **7B parameter** models — impossible on local campus HPC |
+
+#### Researcher Testimonials
+
+> *"Without the SUNY AI Platform, this research could not have proceeded… The platform provided our first cost-effective access to the computational resources required for intensive model fine-tuning experiments."*
+
+> *"Without the platform, we would have had to manage separate API accounts and billing across multiple cloud providers, which would have fragmented our experimental pipeline and made fair comparisons far more difficult."*
+
+#### Tangible Academic Outcomes
+
+- **Tier-1 publications:** Research supported by the platform has been published at **AAAI** and **NeurIPS** — the top venues in artificial intelligence
+- **Grant competitiveness:** Platform directly strengthened proposals to **NSF**, **NIH**, and the **Spencer Foundation**
+- **Named researchers driving impact:** Lei Ying, Dimitris Samaras, Carl Lipo, Shiqi Zhang, Toni May, Ziyang Lu
+
+This is not a pilot or a proof-of-concept. This is a production platform with measurable research outcomes that no competitor can replicate.
 
 ### 2. Intervention-First, Not Prediction-First
 
