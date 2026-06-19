@@ -7,7 +7,7 @@
 
 SUNY's AI Platform has already proven transformational for research — 230+ researchers across 9 campuses, 15 GCP services in production, Gemini Enterprise deployed system-wide, and 10-15x workload speedups. The opportunity now is to apply the same proven cloud foundation to SUNY's highest-priority institutional challenge: **student retention and completion at scale**.
 
-Governor Hochul's ASAP|ACE program is expanding from 4,270 students (Fall 2024) to 10,000 by Fall 2026, backed by $12M in state funding. This program, modeled on the most rigorously evaluated community college intervention in U.S. history, is producing early results — 17 percentage-point retention gains at SUNY. But ASAP|ACE's current analytics infrastructure is fragmented, campus-by-campus, and largely vendor-dependent. There is no unified "Student 360" view across the 64-campus system.
+Governor Hochul's ASAP|ACE program is expanding from 4,270 students (Fall 2024) to 10,000 at 44 campuses by Fall 2026, backed by $20M in annual state funding. This program, modeled on the most rigorously evaluated community college intervention in U.S. history, is producing early results — 17 percentage-point retention gains at SUNY. But ASAP|ACE's current analytics infrastructure is fragmented, campus-by-campus, and largely vendor-dependent. There is no unified "Student 360" view across the 64-campus system.
 
 **Google Cloud can close this gap** by extending the existing SUNY AI Platform into a Student Success data and AI layer — delivering a unified student view, predictive analytics, and generative AI-powered advising tools that amplify what ASAP|ACE's comprehensive support model already does well. This isn't about prediction for prediction's sake (which research shows doesn't work alone) — it's about connecting the right intervention to the right student at the right time, across the entire SUNY system.
 
@@ -19,15 +19,17 @@ Governor Hochul's ASAP|ACE program is expanding from 4,270 students (Fall 2024) 
 
 ASAP (Accelerated Study in Associate Programs) launched at CUNY in 2007 as a comprehensive support model for community college students. Its results are extraordinary and rigorously validated:
 
-| Program | Three-Year Graduation Rate | Comparison Group | Effect |
-|---------|---------------------------|-----------------|--------|
-| ASAP Nationwide (MDRC RCT) | 40.1% | 21.8% | **+18.3 pp** |
-| SUNY ASAP\|ACE (preliminary) | 40%+ (target) | ~25% (system avg) | **+15-17 pp** |
-| Non-ASAP (national avg) | ~25% | — | Baseline |
+| Metric | SUNY CC Average | National CC Average | ASAP (MDRC RCT) |
+|--------|----------------|--------------------|--------------------|
+| **3-Year Graduation Rate** | **~26%** | **~34%** | **40.1%** |
+| **Gap to Close** | 8 pp below national | Baseline | **+6 pp above national** |
+| **Source** | IPEDS / Center for an Urban Future | National Student Clearinghouse (2020 cohort) | MDRC randomized controlled trial |
 
-MDRC's randomized controlled trial found ASAP to be **the largest graduation rate effect of any community college intervention evaluated across 30+ RCTs** — the gold standard in education research. CUNY has served over 120,000 students across 18 cohorts, and the model has been replicated at 60+ institutions in nine states.
+**SUNY community colleges graduate students at 8 percentage points below the national average.** ASAP doesn't just close that gap — it surpasses it, achieving 40.1% three-year graduation rates vs. 21.8% for matched control group students (+18.3 pp effect). This is **the largest graduation rate effect of any community college intervention evaluated across 30+ RCTs** — the gold standard in education research.
 
-> **Source:** MDRC, "Evaluating the Academic and Economic Effects of CUNY's Accelerated Study in Associate Programs"; CUNY ASAP Fast Facts (Nov 2025)
+CUNY has served over 120,000 students across 18 cohorts, and the model has been replicated at 60+ institutions in nine states.
+
+> **Sources:** MDRC, "Evaluating the Academic and Economic Effects of CUNY's ASAP"; CUNY ASAP Fast Facts (Nov 2025); National Student Clearinghouse Research Center, Completing College (2024); Center for an Urban Future, "Struggling to the Finish Line" (2017)
 
 ### What ASAP Actually Provides
 
@@ -51,24 +53,40 @@ ACE (Accelerated Completion and Engagement) extends the model to bachelor's degr
 
 ### SUNY's ASAP|ACE: Scaling Fast, Results Emerging
 
-Governor Hochul announced the expansion on June 3, 2025:
+Governor Hochul announced the expansion, with total state investment now at **$20M annually**:
 
 | Timeline | Students | Campuses | Funding |
 |----------|----------|----------|---------|
 | Fall 2024 | 4,270 | 25 | — |
 | Fall 2025 | 7,050 | 34 | — |
-| Fall 2026 (target) | 10,000 | — | **$12M (FY26 State Budget)** |
+| Fall 2026 (target) | 10,000 | 44 | **$20M annually (FY26-27 State Budget)** |
 
 **Early SUNY results** (preliminary, quasi-experimental):
 - **17 pp** first-to-second-term retention increase
 - **15 pp** one-year retention increase
-- **20%** higher credit completion rate (ASAP students vs. matched comparisons)
-- **9%** higher credit completion rate (ACE students vs. matched comparisons)
+- **20%** higher credit completion rate (ASAP students: 73% vs. 61% non-ASAP)
+- **9%** higher credit completion rate (ACE students: 89% vs. 82% non-ACE)
+- **80% vs. 72%** spring-to-fall persistence (ASAP vs. non-ASAP)
 - At Westchester Community College, MDRC's RCT found **11.8 pp** degree completion increase (35.5% vs. 23.7%)
 
 By Fall 2025, SUNY achieved its enrollment target with a **500+ student waitlist** — demand is outstripping capacity.
 
-> **Source:** Governor Hochul press release (June 3, 2025); SUNY press releases (October 2025)
+### How SUNY Compares to National ASAP Implementations
+
+SUNY's results are strong — but trail the most mature implementations. This is the gap Google Cloud can help close:
+
+| Implementation Site | ASAP Grad Rate | Control Rate | Effect | Study Type |
+|---------------------|---------------|-------------|--------|------------|
+| **CUNY ASAP (original)** | **40.1%** | 21.8% | **+18.3 pp** | MDRC RCT |
+| **Ohio (3 colleges)** | **35%** | 19% | **+16 pp** | MDRC RCT |
+| **SUNY Westchester CC** | **35.5%** | 23.7% | **+11.8 pp** | MDRC RCT |
+| **SUNY system-wide** | *Too early* | — | **17 pp retention** | Quasi-experimental |
+
+CUNY's 18.3 pp effect and Ohio's 16 pp effect were achieved with years of data infrastructure maturation. SUNY's Westchester RCT (+11.8 pp) was conducted during COVID-19, making it impressive in context — but the implementation gap is real. **The difference between an 11.8 pp and an 18.3 pp graduation effect across 10,000 students is approximately 650 additional graduates per year.**
+
+Google Cloud's Student 360 AI Platform directly addresses the factors that separate mature implementations from emerging ones: unified cross-campus data, predictive intervention targeting, and advisor capacity scaling — the exact infrastructure advantages that CUNY and Ohio built over years, delivered to SUNY in months.
+
+> **Sources:** Governor Hochul press release (June 3, 2025); SUNY press releases (October 2025, June 2026); MDRC, "CUNY ASAP Doubles Graduation Rates in New York City and Ohio"; MDRC, Westchester CC Viking ROADS evaluation
 
 ---
 
@@ -323,6 +341,22 @@ BigQuery, Vertex AI, and Looker are open, standards-based tools. SUNY owns its d
 
 The ASAP model has demonstrated a path to **40% three-year graduation rates** — nearly double the national community college average. The Student 360 AI Platform accelerates SUNY's trajectory toward this target by making interventions smarter and more precisely timed.
 
+#### The ASAP ROI — Independently Verified
+
+An independent benefit-cost analysis by Columbia University's Teachers College found that **ASAP returns $3.50 to taxpayers for every $1 invested** and **$12.20 to students for every $1 they invest**:
+
+| ROI Metric | Value | Source |
+|------------|-------|--------|
+| **Taxpayer return** | **$3.50 per $1 invested** | Levin & García (2013), CBCSE, Columbia |
+| **Student return** | **$12.20 per $1 invested** | Levin & García (2013) |
+| **Cost per graduate** | **$6,500 lower** than non-ASAP (despite higher upfront cost) | Levin & García (2013) |
+| **Net benefit per 1,000 students** | **$46.5 million** vs. comparison group | Levin & García (2013) |
+| **Graduation rate effect** | 24.1% → 54.9% (studied cohort) | Levin & García (2013) |
+
+> **Full citation:** Levin, H.M. & García, E. (2013). *Benefit-Cost Analysis of Accelerated Study in Associate Programs (ASAP) of the City University of New York (CUNY).* Center for Benefit-Cost Studies of Education (CBCSE), Teachers College, Columbia University. [PDF](https://www.cuny.edu/wp-content/uploads/sites/4/page-assets/home-preview/asap/evaluation/Levin_ASAP_Benefit_Cost_Report_FINAL_05222013.pdf) | Published as journal article: Levin & García (2017), *The Journal of Higher Education*.
+
+#### Platform ROI for SUNY
+
 **Per-student return when retained:**
 - **$7,000-$12,000** in annual tuition and fees (community college)
 - **$10,000-$15,000** in state funding per FTE
@@ -363,7 +397,7 @@ This prototype is designed as a leave-behind — a working system SUNY can asses
 - KR3: Generate 10,000+ personalized student outreach drafts per semester
 
 **Objective 4: Enable System-Wide Data-Driven Decision Making**
-- KR1: Deliver Looker dashboards to campus leaders at all 34 ASAP|ACE campuses
+- KR1: Deliver Looker dashboards to campus leaders at all 44 ASAP|ACE campuses
 - KR2: Reduce state reporting preparation time from weeks to hours
 - KR3: Publish first cross-campus ASAP|ACE effectiveness analysis using unified data
 
@@ -404,7 +438,7 @@ This prototype is designed as a leave-behind — a working system SUNY can asses
 - Looker dashboards for campus leaders
 
 ### Phase 2C: Scale (Months 8-12)
-- Expand to all 34 ASAP|ACE campuses
+- Expand to all 44 ASAP|ACE campuses
 - Student-facing self-service features (chatbot, eligibility checker)
 - GrantAI extension for student success research funding
 - Cross-campus benchmarking and system-level reporting
@@ -442,6 +476,16 @@ This prototype is designed as a leave-behind — a working system SUNY can asses
 
 8. **Google Cloud Student Success Services Launch** (Sept 2020)
    - https://cloud.google.com/blog/topics/education/introducing-student-success-services-from-google-cloud
+
+9. **Levin & García — Benefit-Cost Analysis of ASAP** (2013, Columbia University / CBCSE) — $3.50 taxpayer ROI per $1 invested; $46.5M net benefit per 1,000 students
+   - https://www.cuny.edu/wp-content/uploads/sites/4/page-assets/home-preview/asap/evaluation/Levin_ASAP_Benefit_Cost_Report_FINAL_05222013.pdf
+   - Journal article: Levin & García (2017), *The Journal of Higher Education*
+
+10. **National Student Clearinghouse Research Center** — National community college completion rates (~34% three-year for 2020 cohort)
+   - https://nscresearchcenter.org/completing-college/
+
+11. **Center for an Urban Future** — "Struggling to the Finish Line: Community College Completion in New York State" (2017) — SUNY CC average ~26%
+   - https://nycfuture.org/research/community-college-completion-in-new-york
 
 ---
 
